@@ -57,15 +57,6 @@ export const metadata = {
     locale: "en_IN",
 
     type: "website",
-
-    images: [
-      {
-        url: "/favicon.ico",
-        width: 512,
-        height: 512,
-        alt: "Kerala IT Park Jobs",
-      },
-    ],
   },
 
   twitter: {
