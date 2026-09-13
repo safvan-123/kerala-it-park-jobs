@@ -4,7 +4,6 @@ import Link from "next/link";
 import { siteConfig } from "@/data/siteConfig";
 import { seoPages } from "@/data/seoPages";
 
-
 const sharedUpdates = [
   {
     code: "01",
@@ -45,8 +44,37 @@ const sharedUpdates = [
 ];
 
 export default function SeoLandingPage({ page }) {
+  const hasContent = Array.isArray(page.content) && page.content.length > 0;
+
+  const hasFaqs = Array.isArray(page.faqs) && page.faqs.length > 0;
+
+  const faqSchema = hasFaqs
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: page.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      }
+    : null;
+
   return (
     <>
+      {/* FAQ STRUCTURED DATA */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
+        />
+      )}
+
       <Breadcrumb
         items={[
           {
@@ -55,9 +83,10 @@ export default function SeoLandingPage({ page }) {
         ]}
       />
 
-      {/* HERO */}
+      {/* =========================================================
+          HERO
+      ========================================================= */}
       <section className="relative overflow-hidden bg-[#F4F7FF]">
-        {/* BACKGROUND DECORATION */}
         <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-[#3047D8]/10 blur-3xl" />
 
         <div className="pointer-events-none absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-[#3B5BFF]/10 blur-3xl" />
@@ -93,7 +122,6 @@ export default function SeoLandingPage({ page }) {
           {page.image && (
             <div className="mx-auto mt-8 max-w-5xl sm:mt-10">
               <div className="group relative overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_15px_40px_rgba(15,23,42,0.10)] sm:rounded-[28px]">
-                {/* IMAGE CONTAINER */}
                 <div
                   className="
                     relative
@@ -104,7 +132,6 @@ export default function SeoLandingPage({ page }) {
                     justify-center
                     overflow-hidden
                     bg-gray-50
-
                     sm:h-[280px]
                     md:h-[340px]
                     lg:h-[390px]
@@ -123,7 +150,6 @@ export default function SeoLandingPage({ page }) {
                       object-center
                       transition-transform
                       duration-700
-
                       sm:object-cover
                       md:group-hover:scale-[1.03]
                     "
@@ -159,6 +185,7 @@ export default function SeoLandingPage({ page }) {
               href={siteConfig.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="View latest Kerala jobs on Instagram"
               className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-7 sm:py-4"
             >
               View Latest Jobs on Instagram
@@ -172,6 +199,7 @@ export default function SeoLandingPage({ page }) {
               href={siteConfig.whatsappChannelUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Join Kerala IT Park Jobs WhatsApp Channel"
               className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#20BD5A] hover:shadow-lg sm:px-7 sm:py-4"
             >
               Join WhatsApp Channel
@@ -202,7 +230,9 @@ export default function SeoLandingPage({ page }) {
         </div>
       </section>
 
-      {/* ABOUT SECTION */}
+      {/* =========================================================
+          ABOUT SECTION
+      ========================================================= */}
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
@@ -217,24 +247,21 @@ export default function SeoLandingPage({ page }) {
               </h2>
 
               <div className="mt-6 space-y-5 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
+                {page.description && <p>{page.description}</p>}
+
                 <p>
-                  Kerala IT Park Jobs helps job seekers stay informed about
-                  career opportunities shared across Kerala. We regularly share
-                  updates related to IT jobs, non-IT jobs, fresher vacancies,
-                  government recruitment, internships, private company jobs and
-                  walk-in interviews.
+                  Kerala IT Park Jobs helps job seekers discover career
+                  opportunities from companies, organisations and employers
+                  across Kerala. We share updates related to IT jobs, fresher
+                  vacancies, government recruitment, private company jobs,
+                  internships and walk-in interviews.
                 </p>
 
                 <p>
-                  Our community is designed to make job discovery easier by
-                  bringing important career updates together through Instagram,
-                  WhatsApp Channels and WhatsApp job communities.
-                </p>
-
-                <p>
-                  If you are searching for {page.title.toLowerCase()}, follow
-                  our social channels to receive regular updates and discover
-                  relevant opportunities more easily.
+                  If you are searching for {page.title.toLowerCase()}, use this
+                  page to explore relevant career categories and related job
+                  searches. You can also follow our Instagram and WhatsApp
+                  communities for regular job updates.
                 </p>
               </div>
             </div>
@@ -253,7 +280,7 @@ export default function SeoLandingPage({ page }) {
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-gray-300">
-                  Follow Kerala IT Park Jobs and receive regular job updates
+                  Follow Kerala IT Park Jobs and receive regular career updates
                   through Instagram and WhatsApp.
                 </p>
 
@@ -294,13 +321,93 @@ export default function SeoLandingPage({ page }) {
         </div>
       </section>
 
-      {/* WHAT WE SHARE */}
-      <section className="relative overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
+      {/* =========================================================
+          PAGE-SPECIFIC SEO CONTENT
+      ========================================================= */}
+      {hasContent && (
+        <section className="relative overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
+          <div className="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#3047D8]/5 blur-3xl" />
+
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#3047D8]">
+                Career Information
+              </p>
+
+              <h2 className="mt-3 text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl">
+                Explore {page.title}
+              </h2>
+
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+                Useful information to help you understand opportunities,
+                locations and career options related to {page.title.toLowerCase()}.
+              </p>
+            </div>
+
+            <div className="mt-10 space-y-6 sm:mt-12">
+              {page.content.map((section, index) => (
+                <article
+                  key={`${section.heading}-${index}`}
+                  className="rounded-[24px] border border-gray-200 bg-white p-6 shadow-sm sm:p-8"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F4F7FF] text-sm font-bold text-[#3047D8]">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+
+                    <div className="min-w-0">
+                      <h2 className="text-xl font-bold leading-8 text-[#11194F] sm:text-2xl">
+                        {section.heading}
+                      </h2>
+
+                      {section.text && (
+                        <p className="mt-4 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
+                          {section.text}
+                        </p>
+                      )}
+
+                      {Array.isArray(section.paragraphs) &&
+                        section.paragraphs.length > 0 && (
+                          <div className="mt-4 space-y-4 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
+                            {section.paragraphs.map((paragraph, paragraphIndex) => (
+                              <p key={paragraphIndex}>{paragraph}</p>
+                            ))}
+                          </div>
+                        )}
+
+                      {Array.isArray(section.bullets) &&
+                        section.bullets.length > 0 && (
+                          <ul className="mt-5 space-y-3">
+                            {section.bullets.map((bullet, bulletIndex) => (
+                              <li
+                                key={bulletIndex}
+                                className="flex items-start gap-3 text-sm leading-7 text-gray-600 sm:text-base"
+                              >
+                                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#3047D8]" />
+
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* =========================================================
+          WHAT WE SHARE
+      ========================================================= */}
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
         <div className="pointer-events-none absolute -left-24 top-1/2 h-72 w-72 rounded-full bg-[#3047D8]/5 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#3047D8]/10 bg-white px-4 py-2 shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#3047D8]/10 bg-[#F8FAFC] px-4 py-2 shadow-sm">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[#3047D8]" />
 
               <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#3047D8]">
@@ -313,8 +420,8 @@ export default function SeoLandingPage({ page }) {
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
-              Stay updated with different career opportunities from across
-              Kerala through our growing job community.
+              Explore different career opportunities from across Kerala through
+              Kerala IT Park Jobs.
             </p>
           </div>
 
@@ -347,14 +454,16 @@ export default function SeoLandingPage({ page }) {
         </div>
       </section>
 
-      {/* POPULAR SEARCHES */}
+      {/* =========================================================
+          POPULAR SEARCHES
+      ========================================================= */}
       {page.keywords?.length > 0 && (
-        <section className="bg-white py-14 sm:py-16 lg:py-20">
+        <section className="bg-[#F8FAFC] py-14 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#3047D8]">
-                  Related Keywords
+                  Related Searches
                 </p>
 
                 <h2 className="mt-2 text-2xl font-bold text-[#11194F] sm:text-3xl">
@@ -363,7 +472,7 @@ export default function SeoLandingPage({ page }) {
               </div>
 
               <p className="max-w-lg text-sm leading-6 text-gray-500">
-                Explore common searches related to this career category.
+                Explore searches commonly related to {page.title.toLowerCase()}.
               </p>
             </div>
 
@@ -371,7 +480,7 @@ export default function SeoLandingPage({ page }) {
               {page.keywords.map((keyword) => (
                 <span
                   key={keyword}
-                  className="cursor-default rounded-full border border-[#3047D8]/10 bg-[#F4F7FF] px-4 py-2 text-xs font-semibold text-[#3047D8] transition-all duration-300 hover:-translate-y-1 hover:border-[#3047D8]/30 hover:bg-white hover:shadow-md sm:text-sm"
+                  className="cursor-default rounded-full border border-[#3047D8]/10 bg-white px-4 py-2 text-xs font-semibold text-[#3047D8] shadow-sm sm:text-sm"
                 >
                   {keyword}
                 </span>
@@ -381,9 +490,11 @@ export default function SeoLandingPage({ page }) {
         </section>
       )}
 
-      {/* RELATED PAGES */}
+      {/* =========================================================
+          RELATED PAGES
+      ========================================================= */}
       {page.related?.length > 0 && (
-        <section className="relative overflow-hidden bg-[#F8FAFC] py-16 sm:py-20">
+        <section className="relative overflow-hidden bg-white py-16 sm:py-20">
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
@@ -433,8 +544,14 @@ export default function SeoLandingPage({ page }) {
                         </span>
                       </div>
 
+                      {relatedPage.description && (
+                        <p className="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                          {relatedPage.description}
+                        </p>
+                      )}
+
                       <p className="mt-4 text-sm font-semibold text-[#3047D8]">
-                        Explore Jobs
+                        Explore Jobs →
                       </p>
                     </div>
                   </Link>
@@ -445,7 +562,58 @@ export default function SeoLandingPage({ page }) {
         </section>
       )}
 
-      {/* COMMUNITY CTA */}
+      {/* =========================================================
+          FAQ SECTION
+      ========================================================= */}
+      {hasFaqs && (
+        <section className="bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#3047D8]">
+                Frequently Asked Questions
+              </p>
+
+              <h2 className="mt-3 text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl">
+                Questions About {page.title}
+              </h2>
+
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+                Find answers to common questions related to{" "}
+                {page.title.toLowerCase()}.
+              </p>
+            </div>
+
+            <div className="mt-10 space-y-4">
+              {page.faqs.map((faq, index) => (
+                <details
+                  key={`${faq.question}-${index}`}
+                  className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-5 py-5 text-left sm:px-6">
+                    <h3 className="text-sm font-bold leading-6 text-[#11194F] sm:text-base">
+                      {faq.question}
+                    </h3>
+
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F4F7FF] text-lg font-medium text-[#3047D8] transition-transform duration-300 group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+
+                  <div className="border-t border-gray-100 px-5 py-5 sm:px-6">
+                    <p className="text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* =========================================================
+          COMMUNITY CTA
+      ========================================================= */}
       <section className="relative overflow-hidden bg-[#11194F] py-16 text-white sm:py-20 lg:py-24">
         <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#3047D8]/30 blur-3xl" />
 
