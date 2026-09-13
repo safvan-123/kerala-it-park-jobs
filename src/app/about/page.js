@@ -54,6 +54,7 @@ export default function AboutPage() {
             <div className="mt-6 flex items-center justify-center gap-3 sm:gap-4">
               {/* LOGO */}
             <div className="group relative h-[50px] w-[50px] shrink-0 overflow-hidden rounded-full border-2 border-white bg-white shadow-[0_8px_24px_rgba(17,25,79,0.14)] sm:h-14 sm:w-14 md:h-16 md:w-16">
+  <div className="relative h-[50px] w-[50px] overflow-hidden rounded-full sm:h-[56px] sm:w-[56px] md:h-[64px] md:w-[64px]">
   <Image
     src="/images/kerala_it_park_jobs_ (1).jpeg"
     alt="Kerala IT Park Jobs"
@@ -62,6 +63,7 @@ export default function AboutPage() {
     className="scale-[1.10] object-cover object-center transition-transform duration-500 group-hover:scale-[1.16]"
     priority
   />
+</div>
 
   <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-[#3047D8]/10" />
 </div>
@@ -163,29 +165,32 @@ export default function AboutPage() {
 
               <div className="relative z-10">
                 {/* LOGO + BRAND */}
-                <div className="flex items-center gap-4">
-                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-white/20 bg-white shadow-lg transition-all duration-500 group-hover:scale-110">
-                    <Image
-                      src="/images/kerala_it_park_jobs_ (1).jpeg"
-                      alt="Kerala IT Park Jobs"
-                      fill
-                      sizes="64px"
-                      className="scale-[1.10] object-cover object-center"
-                    />
+      <div className="flex items-center gap-3">
+  {/* Logo */}
+  <div className="group relative h-[50px] w-[50px] flex-shrink-0 overflow-hidden rounded-full sm:h-[56px] sm:w-[56px] md:h-[64px] md:w-[64px]">
+    <Image
+      src="/images/kerala_it_park_jobs_ (1).jpeg"
+      alt="Kerala IT Park Jobs"
+      fill
+      sizes="(max-width: 640px) 50px, (max-width: 768px) 56px, 64px"
+      className="scale-[1.10] object-cover object-center transition-transform duration-500 group-hover:scale-[1.16]"
+      priority
+    />
 
-                    <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/20" />
-                  </div>
+    <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-white/20" />
+  </div>
 
-                  <div className="min-w-0 text-left">
-                    <p className="text-xs font-bold uppercase tracking-[0.15em] text-blue-200">
-                      Kerala Career Community
-                    </p>
+  {/* Text */}
+  <div className="min-w-0 text-left">
+    <p className="text-xs font-bold uppercase tracking-[0.15em] text-blue-200">
+      Kerala Career Community
+    </p>
 
-                    <p className="mt-1 text-sm font-semibold text-white/90">
-                      Kerala IT Park Jobs
-                    </p>
-                  </div>
-                </div>
+    <p className="mt-1 text-sm font-semibold text-white/90">
+      Kerala IT Park Jobs
+    </p>
+  </div>
+</div>
 
                 {/* CARD TITLE */}
                 <h3 className="mt-6 text-2xl font-bold leading-tight sm:text-3xl">

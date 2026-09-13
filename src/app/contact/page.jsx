@@ -57,18 +57,18 @@ export default function ContactPage() {
 <div className="mt-6">
   {/* FIRST LINE - CENTERED LOGO */}
   <div className="flex justify-center">
-    <div className="group relative h-[48px] w-[48px] overflow-hidden rounded-full border-2 border-white bg-white shadow-[0_8px_24px_rgba(17,25,79,0.14)] sm:h-[52px] sm:w-[52px] md:h-14 md:w-14">
-      <Image
-        src="/images/kerala_it_park_jobs_ (1).jpeg"
-        alt="Kerala IT Park Jobs"
-        fill
-        sizes="(max-width: 640px) 48px, (max-width: 768px) 52px, 56px"
-        className="scale-[1.10] object-cover object-center transition-transform duration-500 group-hover:scale-[1.16]"
-        priority
-      />
+   <div className="group relative isolate h-[48px] w-[48px] shrink-0 overflow-hidden rounded-full border-2 border-white bg-white shadow-[0_8px_24px_rgba(17,25,79,0.14)] sm:h-[52px] sm:w-[52px] md:h-14 md:w-14">
+  <Image
+    src="/images/kerala_it_park_jobs_ (1).jpeg"
+    alt="Kerala IT Park Jobs"
+    fill
+    sizes="(max-width: 640px) 48px, (max-width: 768px) 52px, 56px"
+    className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
+    priority
+  />
 
-      <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-[#3047D8]/10" />
-    </div>
+  <span className="pointer-events-none absolute inset-0 z-10 rounded-full ring-1 ring-[#3047D8]/10" />
+</div>
   </div>
 
   {/* SECOND LINE - CENTERED TITLE */}

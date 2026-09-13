@@ -1,4 +1,4 @@
-// import "./globals.css";
+import "./globals.css";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -41,7 +41,6 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
   },
 
   openGraph: {
