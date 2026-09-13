@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Kerala IT Park Jobs",
 
-  siteUrl: "https://yourdomain.com",
+  siteUrl: "https://keralaitparkjobs.in",
 
   description:
     "Kerala IT Park Jobs shares the latest IT jobs, non-IT jobs, fresher opportunities, government jobs, internships, walk-in interviews and private vacancies across Kerala.",

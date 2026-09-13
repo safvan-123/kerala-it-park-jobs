@@ -1,4 +1,4 @@
-import "./globals.css";
+// import "./globals.css";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -8,8 +8,7 @@ export const metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
 
   title: {
-    default:
-      "Kerala Jobs 2026 | IT, Fresher, Government & Private Jobs",
+    default: "Kerala Jobs 2026 | IT, Fresher, Government & Private Jobs",
     template: "%s | Kerala IT Park Jobs",
   },
 
@@ -39,6 +38,12 @@ export const metadata = {
     canonical: "/",
   },
 
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+
   openGraph: {
     title: "Kerala Jobs 2026 | Kerala IT Park Jobs",
 
@@ -52,6 +57,15 @@ export const metadata = {
     locale: "en_IN",
 
     type: "website",
+
+    images: [
+      {
+        url: "/favicon.ico",
+        width: 512,
+        height: 512,
+        alt: "Kerala IT Park Jobs",
+      },
+    ],
   },
 
   twitter: {
@@ -77,12 +91,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   const organizationSchema = {
     "@context": "https://schema.org",
-
     "@type": "Organization",
 
     name: siteConfig.name,
 
     url: siteConfig.siteUrl,
+
+    logo: `${siteConfig.siteUrl}/favicon.ico`,
 
     description: siteConfig.description,
 
@@ -94,7 +109,6 @@ export default function RootLayout({ children }) {
 
   const websiteSchema = {
     "@context": "https://schema.org",
-
     "@type": "WebSite",
 
     name: siteConfig.name,
