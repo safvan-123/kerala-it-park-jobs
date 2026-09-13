@@ -17,14 +17,16 @@ export async function generateMetadata({ params }) {
   if (!page) {
     return {
       title: "Page Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
   return {
     title: page.metaTitle,
-
     description: page.description,
-
     keywords: page.keywords,
 
     alternates: {

@@ -4,7 +4,7 @@ import Categories from "@/components/home/categories/Categories";
 import Locations from "@/components/home/Locations";
 import ITParks from "@/components/home/ITParks";
 import JobRoles from "@/components/home/JobRoles";
-// import Qualifications from "@/components/home/Qualifications";
+import Qualifications from "@/components/home/Qualifications";
 import WhyUs from "@/components/home/WhyUs";
 import Community from "@/components/home/Community";
 import FAQ from "@/components/home/FAQ";
@@ -24,13 +24,11 @@ export default function Home() {
 
       <Locations /> 
 
-    
-
       <ResourcesPage/>
 
-      {/* <Qualifications /> */}
-
       <WhyUs />
+
+      <Qualifications />
 
       <Community />
 

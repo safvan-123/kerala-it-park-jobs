@@ -8,7 +8,7 @@ const categories = [
     href: "/it-jobs-kerala",
     short: "IT",
     image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop",
   },
   {
     title: "Fresher Jobs",
@@ -16,7 +16,7 @@ const categories = [
     href: "/fresher-jobs-kerala",
     short: "FR",
     image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop",
   },
   {
     title: "Government Jobs",
@@ -24,7 +24,7 @@ const categories = [
     href: "/government-jobs-kerala",
     short: "GV",
     image:
-      "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop",
   },
   {
     title: "Non-IT Jobs",
@@ -32,7 +32,7 @@ const categories = [
     href: "/non-it-jobs-kerala",
     short: "NI",
     image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop",
   },
   {
     title: "Walk-in Jobs",
@@ -40,7 +40,7 @@ const categories = [
     href: "/walk-in-jobs-kerala",
     short: "WI",
     image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop",
   },
   {
     title: "Internships",
@@ -48,7 +48,7 @@ const categories = [
     href: "/internships-kerala",
     short: "IN",
     image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop",
   },
   {
     title: "Work From Home",
@@ -56,7 +56,7 @@ const categories = [
     href: "/work-from-home-jobs-kerala",
     short: "WF",
     image:
-      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop",
   },
   {
     title: "Private Jobs",
@@ -64,7 +64,7 @@ const categories = [
     href: "/private-jobs-kerala",
     short: "PR",
     image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop",
   },
 ];
 
@@ -136,7 +136,19 @@ export default function Categories() {
                 "
               >
                 <img
-                  src={category.image}
+                  src={`${category.image}&w=800&q=72`}
+                  srcSet={`
+                    ${category.image}&w=400&q=72 400w,
+                    ${category.image}&w=600&q=72 600w,
+                    ${category.image}&w=800&q=72 800w
+                  `}
+                  sizes="
+                    (max-width: 639px) 100vw,
+                    (max-width: 1023px) 50vw,
+                    25vw
+                  "
+                  width="800"
+                  height="450"
                   alt={`${category.title} opportunities in Kerala`}
                   loading="lazy"
                   decoding="async"
@@ -212,7 +224,6 @@ export default function Categories() {
 
               {/* CONTENT */}
               <div className="relative p-5 sm:p-6">
-                {/* Light card background */}
                 <div
                   className="
                     category-hover-background
@@ -227,17 +238,14 @@ export default function Categories() {
                 />
 
                 <div className="relative z-10">
-                  {/* Title */}
                   <h3 className="category-title text-lg font-bold text-[#11194F] sm:text-xl">
                     {category.title}
                   </h3>
 
-                  {/* Description */}
                   <p className="mt-3 min-h-[48px] text-sm leading-6 text-gray-600">
                     {category.description}
                   </p>
 
-                  {/* Explore Jobs */}
                   <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-gray-800">
                     <span>Explore Jobs</span>
 

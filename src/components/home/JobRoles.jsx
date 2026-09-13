@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 
 const roles = [
   {
@@ -6,84 +6,84 @@ const roles = [
     href: "/software-developer-jobs-kerala",
     short: "SD",
     image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop",
   },
   {
     title: "Frontend Developer",
     href: "/frontend-developer-jobs-kerala",
     short: "FE",
     image:
-      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop",
   },
   {
     title: "React Developer",
     href: "/react-developer-jobs-kerala",
     short: "RE",
     image:
-      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop",
   },
   {
     title: "Full Stack Developer",
     href: "/full-stack-developer-jobs-kerala",
     short: "FS",
     image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop",
   },
   {
     title: "Python Developer",
     href: "/python-jobs-kerala",
     short: "PY",
     image:
-      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop",
   },
   {
     title: "Java Developer",
     href: "/java-jobs-kerala",
     short: "JV",
     image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop",
   },
   {
     title: "Software Testing",
     href: "/software-testing-jobs-kerala",
     short: "ST",
     image:
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop",
   },
   {
     title: "QA Engineer",
     href: "/qa-jobs-kerala",
     short: "QA",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop",
   },
   {
     title: "Data Analyst",
     href: "/data-analyst-jobs-kerala",
     short: "DA",
     image:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop",
   },
   {
     title: "Accountant",
     href: "/accountant-jobs-kerala",
     short: "AC",
     image:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop",
   },
   {
     title: "HR",
     href: "/hr-jobs-kerala",
     short: "HR",
     image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop",
   },
   {
     title: "Digital Marketing",
     href: "/marketing-jobs-kerala",
     short: "DM",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=90",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop",
   },
 ];
 
@@ -145,7 +145,20 @@ export default function JobRoles() {
               {/* IMAGE */}
               <div className="relative h-[190px] w-full overflow-hidden sm:h-[185px] md:h-[180px] lg:h-[175px]">
                 <img
-                  src={role.image}
+                  src={`${role.image}&w=800&q=72`}
+                  srcSet={`
+                    ${role.image}&w=400&q=72 400w,
+                    ${role.image}&w=600&q=72 600w,
+                    ${role.image}&w=800&q=72 800w
+                  `}
+                  sizes="
+                    (max-width: 639px) 100vw,
+                    (max-width: 767px) 50vw,
+                    (max-width: 1023px) 33vw,
+                    25vw
+                  "
+                  width="800"
+                  height="450"
                   alt={`${role.title} jobs in Kerala`}
                   loading="lazy"
                   decoding="async"
