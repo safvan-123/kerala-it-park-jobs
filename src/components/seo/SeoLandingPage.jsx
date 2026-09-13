@@ -4,6 +4,7 @@ import Link from "next/link";
 import { siteConfig } from "@/data/siteConfig";
 import { seoPages } from "@/data/seoPages";
 
+
 const sharedUpdates = [
   {
     code: "01",
@@ -62,11 +63,13 @@ export default function SeoLandingPage({ page }) {
         <div className="pointer-events-none absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-[#3B5BFF]/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-24">
+          {/* HERO TEXT */}
           <div className="mx-auto max-w-4xl text-center">
             {/* BADGE */}
             <div className="inline-flex items-center gap-2 rounded-full border border-[#3047D8]/10 bg-white px-4 py-2 shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3047D8] opacity-40" />
+
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3047D8]" />
               </span>
 
@@ -84,53 +87,117 @@ export default function SeoLandingPage({ page }) {
             <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8 md:mt-6 md:text-lg">
               {page.intro}
             </p>
+          </div>
 
-            {/* CTA BUTTONS */}
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
-              <a
-                href={siteConfig.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-7 sm:py-4"
-              >
-                View Latest Jobs on Instagram
+          {/* PAGE IMAGE */}
+          {page.image && (
+            <div className="mx-auto mt-8 max-w-5xl sm:mt-10">
+              <div className="group relative overflow-hidden rounded-[22px] border border-gray-200 bg-white shadow-[0_15px_40px_rgba(15,23,42,0.10)] sm:rounded-[28px]">
+                {/* IMAGE CONTAINER */}
+                <div
+                  className="
+                    relative
+                    flex
+                    h-[190px]
+                    w-full
+                    items-center
+                    justify-center
+                    overflow-hidden
+                    bg-gray-50
 
-                <span className="transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </a>
+                    sm:h-[280px]
+                    md:h-[340px]
+                    lg:h-[390px]
+                  "
+                >
+                  <img
+                    src={page.image}
+                    alt={`${page.heading} - Kerala IT Park Jobs`}
+                    loading="eager"
+                    decoding="async"
+                    className="
+                      block
+                      h-full
+                      w-full
+                      object-contain
+                      object-center
+                      transition-transform
+                      duration-700
 
-              <a
-                href={siteConfig.whatsappChannelUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#20BD5A] hover:shadow-lg sm:px-7 sm:py-4"
-              >
-                Join WhatsApp Channel
+                      sm:object-cover
+                      md:group-hover:scale-[1.03]
+                    "
+                  />
 
-                <span className="transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </a>
+                  {/* DESKTOP/TABLET OVERLAY */}
+                  <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-[#11194F]/65 via-transparent to-transparent sm:block" />
+
+                  {/* IMAGE INFO */}
+                  <div className="absolute inset-x-0 bottom-0 hidden items-end justify-between gap-4 p-5 sm:flex sm:p-6 lg:p-8">
+                    <div className="text-left">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/75 sm:text-xs">
+                        Kerala Career Opportunities
+                      </p>
+
+                      <h2 className="mt-1.5 text-xl font-bold text-white sm:text-2xl lg:text-3xl">
+                        {page.heading}
+                      </h2>
+                    </div>
+
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/15 text-lg text-white backdrop-blur-sm sm:h-11 sm:w-11">
+                      ↓
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          )}
 
-            {/* SMALL INFO STRIP */}
-            <div className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-gray-500 sm:text-sm">
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
-                Kerala-focused updates
-              </span>
+          {/* CTA BUTTONS */}
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href={siteConfig.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-7 sm:py-4"
+            >
+              View Latest Jobs on Instagram
 
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
-                Fresher friendly
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
               </span>
+            </a>
 
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
-                IT & Non-IT opportunities
+            <a
+              href={siteConfig.whatsappChannelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#20BD5A] hover:shadow-lg sm:px-7 sm:py-4"
+            >
+              Join WhatsApp Channel
+
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
               </span>
-            </div>
+            </a>
+          </div>
+
+          {/* SMALL INFO STRIP */}
+          <div className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-gray-500 sm:text-sm">
+            <span className="inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
+              Kerala-focused updates
+            </span>
+
+            <span className="inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
+              Fresher friendly
+            </span>
+
+            <span className="inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
+              IT & Non-IT opportunities
+            </span>
           </div>
         </div>
       </section>

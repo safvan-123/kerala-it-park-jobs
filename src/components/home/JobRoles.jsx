@@ -5,67 +5,91 @@ const roles = [
     title: "Software Developer",
     href: "/software-developer-jobs-kerala",
     short: "SD",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "Frontend Developer",
     href: "/frontend-developer-jobs-kerala",
     short: "FE",
+    image:
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "React Developer",
     href: "/react-developer-jobs-kerala",
     short: "RE",
+    image:
+      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "Full Stack Developer",
     href: "/full-stack-developer-jobs-kerala",
     short: "FS",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "Python Developer",
     href: "/python-jobs-kerala",
     short: "PY",
+    image:
+      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "Java Developer",
     href: "/java-jobs-kerala",
     short: "JV",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "Software Testing",
     href: "/software-testing-jobs-kerala",
     short: "ST",
+    image:
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "QA Engineer",
     href: "/qa-jobs-kerala",
     short: "QA",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "Data Analyst",
     href: "/data-analyst-jobs-kerala",
     short: "DA",
+    image:
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "Accountant",
     href: "/accountant-jobs-kerala",
     short: "AC",
+    image:
+      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "HR",
     href: "/hr-jobs-kerala",
     short: "HR",
+    image:
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=90",
   },
   {
     title: "Digital Marketing",
     href: "/marketing-jobs-kerala",
     short: "DM",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=90",
   },
 ];
 
 export default function JobRoles() {
   return (
-    <section className="relative overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[#F8FAFC] py-14 sm:py-20 lg:py-24">
       {/* BACKGROUND DECORATION */}
       <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#3047D8]/5 blur-3xl" />
 
@@ -75,9 +99,12 @@ export default function JobRoles() {
         {/* HEADER */}
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#3047D8]/10 bg-white px-4 py-2 shadow-sm">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-[#3047D8]" />
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3047D8] opacity-30" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3047D8]" />
+            </span>
 
-            <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8] sm:text-sm">
+            <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#3047D8] sm:text-sm">
               Career Categories
             </span>
           </div>
@@ -94,43 +121,132 @@ export default function JobRoles() {
         </div>
 
         {/* ROLE GRID */}
-        <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {roles.map((role) => (
             <Link
               key={role.href}
               href={role.href}
-              className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#3047D8]/30 hover:shadow-[0_15px_35px_rgba(48,71,216,0.10)]"
+              className="
+                group
+                relative
+                overflow-hidden
+                rounded-[24px]
+                border
+                border-gray-200
+                bg-white
+                shadow-[0_8px_28px_rgba(17,25,79,0.07)]
+                transition-all
+                duration-300
+                md:hover:-translate-y-1.5
+                md:hover:border-[#3047D8]/20
+                md:hover:shadow-[0_18px_42px_rgba(48,71,216,0.13)]
+              "
             >
-              {/* HOVER GLOW */}
-              <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-[#3047D8]/5 transition-all duration-500 group-hover:scale-150 group-hover:bg-[#3047D8]/10" />
+              {/* IMAGE */}
+              <div className="relative h-[190px] w-full overflow-hidden sm:h-[185px] md:h-[180px] lg:h-[175px]">
+                <img
+                  src={role.image}
+                  alt={`${role.title} jobs in Kerala`}
+                  loading="lazy"
+                  decoding="async"
+                  className="
+                    block
+                    h-full
+                    w-full
+                    object-cover
+                    object-center
+                    transition-transform
+                    duration-700
+                    ease-out
+                    md:group-hover:scale-[1.05]
+                  "
+                />
 
-              <div className="relative z-10">
-                <div className="flex items-start justify-between gap-4">
-                  {/* INITIAL BADGE */}
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F4F7FF] text-xs font-bold text-[#3047D8] transition-all duration-300 group-hover:scale-110 group-hover:bg-[#3047D8] group-hover:text-white">
-                    {role.short}
-                  </div>
+                {/* VERY LIGHT BOTTOM SHADE */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/[0.04] to-transparent" />
 
-                  {/* ARROW */}
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-400 transition-all duration-300 group-hover:translate-x-1 group-hover:border-[#3047D8] group-hover:bg-[#3047D8] group-hover:text-white">
-                    →
-                  </span>
+                {/* INITIAL BADGE */}
+                <div
+                  className="
+                    absolute
+                    left-4
+                    top-4
+                    flex
+                    h-11
+                    w-11
+                    items-center
+                    justify-center
+                    rounded-[14px]
+                    border
+                    border-white/60
+                    bg-white/95
+                    text-xs
+                    font-extrabold
+                    text-[#3047D8]
+                    shadow-lg
+                    backdrop-blur-md
+                  "
+                >
+                  {role.short}
                 </div>
 
-                <h3 className="mt-5 text-base font-bold text-[#11194F] transition-colors duration-300 group-hover:text-[#3047D8] sm:text-lg">
-                  {role.title}
-                </h3>
+                {/* ARROW */}
+                <div
+                  className="
+                    absolute
+                    right-4
+                    top-4
+                    flex
+                    h-9
+                    w-9
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-white/60
+                    bg-white/95
+                    text-sm
+                    font-bold
+                    text-[#3047D8]
+                    shadow-md
+                    backdrop-blur-md
+                  "
+                >
+                  →
+                </div>
 
-                <p className="mt-2 text-sm leading-6 text-gray-500">
-                  Explore {role.title} opportunities across Kerala.
-                </p>
+                {/* ROLE NAME ON IMAGE - MOBILE */}
+                <div className="absolute inset-x-0 bottom-0 px-4 pb-4 sm:hidden">
+                  <h3 className="text-xl font-bold leading-tight text-white drop-shadow-sm">
+                    {role.title}
+                  </h3>
+                </div>
+              </div>
 
-                <div className="mt-5 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[#3047D8]">
-                  <span>{role.title} Jobs</span>
+              {/* CONTENT */}
+              <div className="relative p-5 sm:p-5 lg:p-6">
+                <div className="pointer-events-none absolute -right-8 -top-8 h-20 w-20 rounded-full bg-[#3047D8]/[0.035]" />
 
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
+                <div className="relative z-10">
+                  {/* DESKTOP / TABLET TITLE */}
+                  <h3 className="hidden text-lg font-bold leading-tight text-[#11194F] sm:block">
+                    {role.title}
+                  </h3>
+
+                  <p className="text-sm leading-6 text-gray-500 sm:mt-2.5">
+                    Explore {role.title} opportunities across Kerala.
+                  </p>
+
+                  {/* CTA */}
+                  <div className="mt-4 flex items-center justify-between border-t border-gray-100 pt-4 sm:mt-5">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.11em] text-[#3047D8] sm:text-xs">
+                      Explore Jobs
+                    </span>
+
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F4F7FF] text-xs font-bold text-[#3047D8]">
+                      →
+                    </span>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -138,14 +254,26 @@ export default function JobRoles() {
         </div>
 
         {/* BOTTOM CTA */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex justify-center sm:mt-12">
           <Link
             href="/software-jobs-kerala"
-            className="group inline-flex items-center gap-3 rounded-full border border-[#3047D8]/20 bg-white px-5 py-3 text-sm font-semibold text-[#3047D8] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#3047D8] hover:shadow-lg"
+            className="
+              inline-flex
+              items-center
+              gap-3
+              rounded-full
+              bg-[#11194F]
+              px-6
+              py-3.5
+              text-sm
+              font-semibold
+              text-white
+              shadow-[0_10px_30px_rgba(17,25,79,0.16)]
+            "
           >
             Explore Software Jobs
 
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F4F7FF] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#3047D8] group-hover:text-white">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10">
               →
             </span>
           </Link>

@@ -1,0 +1,228 @@
+/* ========================================
+   KERALA IT PARK JOBS BRAND COLOR
+
+   Deep Logo Blue: #1F218F
+======================================== */
+
+
+/* ========================================
+   MOBILE DEFAULT DESIGN
+   Highlighted design visible initially
+======================================== */
+
+.category-card {
+  transform: translateY(-8px);
+
+  border-color: rgba(31, 33, 143, 0.4);
+
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+
+/* Background gradient */
+
+.category-hover-background {
+  opacity: 1;
+
+  transition: opacity 300ms ease;
+}
+
+
+/* Top accent line */
+
+.category-top-accent {
+  width: 100%;
+  background-color: #1f218f;
+
+  transition: width 300ms ease;
+}
+
+
+/* Category icon */
+
+.category-icon {
+  transform: scale(1.1);
+
+  background-color: #1f218f;
+  color: #ffffff;
+
+  transition:
+    transform 300ms ease,
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+
+/* Top-right arrow */
+
+.category-arrow {
+  transform: translateX(4px);
+
+  border-color: #1f218f;
+  background-color: #1f218f;
+  color: #ffffff;
+
+  transition:
+    transform 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease;
+}
+
+
+/* Category title */
+
+.category-title {
+  color: #1f218f;
+
+  transition: color 300ms ease;
+}
+
+
+/* Explore Jobs arrow */
+
+.category-bottom-arrow {
+  display: inline-block;
+
+  transform: translateX(6px);
+
+  transition: transform 300ms ease;
+}
+
+
+/* ========================================
+   DESKTOP DEFAULT DESIGN
+======================================== */
+
+@media (min-width: 768px) {
+
+  .category-card {
+    transform: translateY(0);
+
+    border-color: #e5e7eb;
+
+    box-shadow:
+      0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+
+  /* Hide gradient */
+
+  .category-hover-background {
+    opacity: 0;
+  }
+
+
+  /* Hide top accent */
+
+  .category-top-accent {
+    width: 0;
+  }
+
+
+  /* Default category icon */
+
+  .category-icon {
+    transform: scale(1);
+
+    background-color: #f4f7ff;
+    color: #1f218f;
+  }
+
+
+  /* Default top arrow */
+
+  .category-arrow {
+    transform: translateX(0);
+
+    border-color: #e5e7eb;
+    background-color: transparent;
+    color: #9ca3af;
+  }
+
+
+  /* Default title */
+
+  .category-title {
+    color: #11194f;
+  }
+
+
+  /* Default Explore Jobs arrow */
+
+  .category-bottom-arrow {
+    transform: translateX(0);
+  }
+
+
+  /* ========================================
+     DESKTOP HOVER DESIGN
+  ======================================== */
+
+  .category-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(31, 33, 143, 0.4);
+
+    box-shadow:
+      0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+
+  /* Show gradient */
+
+  .category-card:hover .category-hover-background {
+    opacity: 1;
+  }
+
+
+  /* Top accent */
+
+  .category-card:hover .category-top-accent {
+    width: 100%;
+    background-color: #1f218f;
+  }
+
+
+  /* Category icon */
+
+  .category-card:hover .category-icon {
+    transform: scale(1.1);
+
+    background-color: #1f218f;
+    color: #ffffff;
+  }
+
+
+  /* Top-right arrow */
+
+  .category-card:hover .category-arrow {
+    transform: translateX(4px);
+
+    border-color: #1f218f;
+    background-color: #1f218f;
+    color: #ffffff;
+  }
+
+
+  /* Category title */
+
+  .category-card:hover .category-title {
+    color: #1f218f;
+  }
+
+
+  /* Explore Jobs arrow */
+
+  .category-card:hover .category-bottom-arrow {
+    transform: translateX(6px);
+  }
+}

@@ -32,193 +32,233 @@ export const seoPages = {
     ],
   },
 
-  "it-jobs-kerala": {
-    title: "IT Jobs in Kerala",
-    metaTitle: "IT Jobs in Kerala | Software & Technology Jobs",
-    description:
-      "Explore IT job updates in Kerala including software development, testing, support, DevOps, UI UX, data and technology opportunities.",
-    heading: "IT Jobs in Kerala",
-    intro:
-      "Looking for IT jobs in Kerala? Kerala IT Park Jobs helps job seekers stay updated with software, development, testing, support and technology opportunities shared from companies across Kerala.",
-    keywords: [
-      "IT jobs Kerala",
-      "IT jobs in Kerala",
-      "software jobs Kerala",
-      "IT vacancies Kerala",
-      "technology jobs Kerala",
-      "IT company jobs Kerala",
-    ],
-    related: [
-      "software-jobs-kerala",
-      "fresher-jobs-kerala",
-      "infopark-jobs",
-      "technopark-jobs",
-      "cyberpark-jobs",
-    ],
-  },
+ "it-jobs-kerala": {
+  title: "IT Jobs in Kerala",
+  metaTitle: "IT Jobs in Kerala | Software & Technology Jobs",
+  description:
+    "Explore IT job updates in Kerala including software development, testing, support, DevOps, UI UX, data and technology opportunities.",
+  heading: "IT Jobs in Kerala",
+  intro:
+    "Looking for IT jobs in Kerala? Kerala IT Park Jobs helps job seekers stay updated with software, development, testing, support and technology opportunities shared from companies across Kerala.",
 
-  "non-it-jobs-kerala": {
-    title: "Non-IT Jobs in Kerala",
-    metaTitle: "Non-IT Jobs in Kerala | Latest Career Updates",
-    description:
-      "Discover non-IT jobs in Kerala including accounting, HR, sales, marketing, healthcare, retail, logistics and administration opportunities.",
-    heading: "Non-IT Jobs in Kerala",
-    intro:
-      "Stay updated with non-IT job opportunities across Kerala including accounts, HR, sales, marketing, administration, healthcare, retail and customer service roles.",
-    keywords: [
-      "non IT jobs Kerala",
-      "private jobs Kerala",
-      "office jobs Kerala",
-      "non technical jobs Kerala",
-      "non IT vacancies Kerala",
-    ],
-    related: [
-      "accountant-jobs-kerala",
-      "hr-jobs-kerala",
-      "sales-jobs-kerala",
-      "marketing-jobs-kerala",
-      "retail-jobs-kerala",
-      "logistics-jobs-kerala",
-    ],
-  },
+  image:
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=90",
 
-  "fresher-jobs-kerala": {
-    title: "Fresher Jobs in Kerala",
-    metaTitle: "Fresher Jobs in Kerala | Graduate & Entry Level Jobs",
-    description:
-      "Explore fresher jobs in Kerala for graduates, BTech, BCA, MCA, BCom, diploma holders and candidates starting their careers.",
-    heading: "Fresher Jobs in Kerala",
-    intro:
-      "Kerala IT Park Jobs shares fresher opportunities from IT companies, private companies, startups and other employers across Kerala.",
-    keywords: [
-      "fresher jobs Kerala",
-      "freshers jobs Kerala",
-      "jobs for freshers Kerala",
-      "graduate jobs Kerala",
-      "entry level jobs Kerala",
-      "fresher vacancies Kerala",
-    ],
-    related: [
-      "graduate-jobs-kerala",
-      "entry-level-jobs-kerala",
-      "internships-kerala",
-      "jobs-in-kochi",
-      "it-jobs-kerala",
-    ],
-  },
+  keywords: [
+    "IT jobs Kerala",
+    "IT jobs in Kerala",
+    "software jobs Kerala",
+    "IT vacancies Kerala",
+    "technology jobs Kerala",
+    "IT company jobs Kerala",
+  ],
 
-  "government-jobs-kerala": {
-    title: "Government Jobs in Kerala",
-    metaTitle: "Government Jobs in Kerala | Govt Recruitment Updates",
-    description:
-      "Stay updated with Kerala government, central government, PSC, banking, railway and public sector recruitment opportunities.",
-    heading: "Government Jobs in Kerala",
-    intro:
-      "Follow Kerala IT Park Jobs for updates about government recruitment, public sector opportunities and other government job notifications relevant to Kerala job seekers.",
-    keywords: [
-      "government jobs Kerala",
-      "govt jobs Kerala",
-      "Kerala government jobs",
-      "PSC jobs Kerala",
-      "central government jobs Kerala",
-      "government vacancy Kerala",
-    ],
-    related: [
-      "degree-jobs-kerala",
-      "plus-two-jobs-kerala",
-      "10th-pass-jobs-kerala",
-      "banking-jobs-kerala",
-    ],
-  },
+  related: [
+    "software-jobs-kerala",
+    "fresher-jobs-kerala",
+    "infopark-jobs",
+    "technopark-jobs",
+    "cyberpark-jobs",
+  ],
+},
 
-  "private-jobs-kerala": {
-    title: "Private Jobs in Kerala",
-    metaTitle: "Private Jobs in Kerala | Latest Private Company Jobs",
-    description:
-      "Explore private company jobs in Kerala including IT, non-IT, sales, HR, accounting, marketing and fresher opportunities.",
-    heading: "Private Jobs in Kerala",
-    intro:
-      "Discover employment opportunities from private companies, startups and businesses across Kerala.",
-    keywords: [
-      "private jobs Kerala",
-      "private company jobs Kerala",
-      "private vacancy Kerala",
-      "private sector jobs Kerala",
-    ],
-    related: [
-      "it-jobs-kerala",
-      "non-it-jobs-kerala",
-      "fresher-jobs-kerala",
-      "graduate-jobs-kerala",
-    ],
-  },
+"non-it-jobs-kerala": {
+  title: "Non-IT Jobs in Kerala",
+  metaTitle: "Non-IT Jobs in Kerala | Latest Career Updates",
+  description:
+    "Discover non-IT jobs in Kerala including accounting, HR, sales, marketing, healthcare, retail, logistics and administration opportunities.",
+  heading: "Non-IT Jobs in Kerala",
+  intro:
+    "Stay updated with non-IT job opportunities across Kerala including accounts, HR, sales, marketing, administration, healthcare, retail and customer service roles.",
 
-  "walk-in-jobs-kerala": {
-    title: "Walk-in Interviews in Kerala",
-    metaTitle: "Walk-in Interviews in Kerala | Latest Walk-in Jobs",
-    description:
-      "Explore walk-in interviews, recruitment drives and direct hiring opportunities across Kerala.",
-    heading: "Walk-in Interviews in Kerala",
-    intro:
-      "Stay updated with walk-in interviews, hiring drives and direct recruitment opportunities happening across Kerala.",
-    keywords: [
-      "walk in interview Kerala",
-      "walk in jobs Kerala",
-      "walk in interview Kochi",
-      "walk in interview today Kerala",
-      "walk in vacancy Kerala",
-    ],
-    related: [
-      "fresher-jobs-kerala",
-      "private-jobs-kerala",
-      "jobs-in-kochi",
-      "jobs-in-trivandrum",
-    ],
-  },
+  image:
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=90",
 
-  "internships-kerala": {
-    title: "Internships in Kerala",
-    metaTitle: "Internships in Kerala | Student & Fresher Opportunities",
-    description:
-      "Explore internship opportunities in Kerala for students, graduates and freshers across IT and non-IT fields.",
-    heading: "Internships in Kerala",
-    intro:
-      "Discover internships, trainee programs and learning opportunities available to students, graduates and freshers across Kerala.",
-    keywords: [
-      "internships Kerala",
-      "internship jobs Kerala",
-      "IT internship Kerala",
-      "fresher internship Kerala",
-      "student internship Kerala",
-    ],
-    related: [
-      "fresher-jobs-kerala",
-      "graduate-jobs-kerala",
-      "it-jobs-kerala",
-      "entry-level-jobs-kerala",
-    ],
-  },
+  keywords: [
+    "non IT jobs Kerala",
+    "private jobs Kerala",
+    "office jobs Kerala",
+    "non technical jobs Kerala",
+    "non IT vacancies Kerala",
+  ],
 
-  "work-from-home-jobs-kerala": {
-    title: "Work From Home Jobs in Kerala",
-    metaTitle: "Work From Home Jobs in Kerala | Remote Jobs",
-    description:
-      "Discover remote and work-from-home career opportunities relevant to job seekers in Kerala.",
-    heading: "Work From Home Jobs in Kerala",
-    intro:
-      "Explore remote and work-from-home opportunities that Kerala job seekers can apply for.",
-    keywords: [
-      "work from home jobs Kerala",
-      "remote jobs Kerala",
-      "online jobs Kerala",
-      "WFH jobs Kerala",
-    ],
-    related: [
-      "it-jobs-kerala",
-      "fresher-jobs-kerala",
-      "part-time-jobs-kerala",
-    ],
-  },
+  related: [
+    "accountant-jobs-kerala",
+    "hr-jobs-kerala",
+    "sales-jobs-kerala",
+    "marketing-jobs-kerala",
+    "retail-jobs-kerala",
+    "logistics-jobs-kerala",
+  ],
+},
+
+"fresher-jobs-kerala": {
+  title: "Fresher Jobs in Kerala",
+  metaTitle: "Fresher Jobs in Kerala | Graduate & Entry Level Jobs",
+  description:
+    "Explore fresher jobs in Kerala for graduates, BTech, BCA, MCA, BCom, diploma holders and candidates starting their careers.",
+  heading: "Fresher Jobs in Kerala",
+  intro:
+    "Kerala IT Park Jobs shares fresher opportunities from IT companies, private companies, startups and other employers across Kerala.",
+
+  image:
+    "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=90",
+
+  keywords: [
+    "fresher jobs Kerala",
+    "freshers jobs Kerala",
+    "jobs for freshers Kerala",
+    "graduate jobs Kerala",
+    "entry level jobs Kerala",
+    "fresher vacancies Kerala",
+  ],
+
+  related: [
+    "graduate-jobs-kerala",
+    "entry-level-jobs-kerala",
+    "internships-kerala",
+    "jobs-in-kochi",
+    "it-jobs-kerala",
+  ],
+},
+
+"government-jobs-kerala": {
+  title: "Government Jobs in Kerala",
+  metaTitle: "Government Jobs in Kerala | Govt Recruitment Updates",
+  description:
+    "Stay updated with Kerala government, central government, PSC, banking, railway and public sector recruitment opportunities.",
+  heading: "Government Jobs in Kerala",
+  intro:
+    "Follow Kerala IT Park Jobs for updates about government recruitment, public sector opportunities and other government job notifications relevant to Kerala job seekers.",
+
+  image:
+    "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1600&q=90",
+
+  keywords: [
+    "government jobs Kerala",
+    "govt jobs Kerala",
+    "Kerala government jobs",
+    "PSC jobs Kerala",
+    "central government jobs Kerala",
+    "government vacancy Kerala",
+  ],
+
+  related: [
+    "degree-jobs-kerala",
+    "plus-two-jobs-kerala",
+    "10th-pass-jobs-kerala",
+    "banking-jobs-kerala",
+  ],
+},
+
+"private-jobs-kerala": {
+  title: "Private Jobs in Kerala",
+  metaTitle: "Private Jobs in Kerala | Latest Private Company Jobs",
+  description:
+    "Explore private company jobs in Kerala including IT, non-IT, sales, HR, accounting, marketing and fresher opportunities.",
+  heading: "Private Jobs in Kerala",
+  intro:
+    "Discover employment opportunities from private companies, startups and businesses across Kerala.",
+
+  image:
+    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=90",
+
+  keywords: [
+    "private jobs Kerala",
+    "private company jobs Kerala",
+    "private vacancy Kerala",
+    "private sector jobs Kerala",
+  ],
+
+  related: [
+    "it-jobs-kerala",
+    "non-it-jobs-kerala",
+    "fresher-jobs-kerala",
+    "graduate-jobs-kerala",
+  ],
+},
+
+"walk-in-jobs-kerala": {
+  title: "Walk-in Interviews in Kerala",
+  metaTitle: "Walk-in Interviews in Kerala | Latest Walk-in Jobs",
+  description:
+    "Explore walk-in interviews, recruitment drives and direct hiring opportunities across Kerala.",
+  heading: "Walk-in Interviews in Kerala",
+  intro:
+    "Stay updated with walk-in interviews, hiring drives and direct recruitment opportunities happening across Kerala.",
+
+  image:
+    "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=90",
+
+  keywords: [
+    "walk in interview Kerala",
+    "walk in jobs Kerala",
+    "walk in interview Kochi",
+    "walk in interview today Kerala",
+    "walk in vacancy Kerala",
+  ],
+
+  related: [
+    "fresher-jobs-kerala",
+    "private-jobs-kerala",
+    "jobs-in-kochi",
+    "jobs-in-trivandrum",
+  ],
+},
+
+"internships-kerala": {
+  title: "Internships in Kerala",
+  metaTitle: "Internships in Kerala | Student & Fresher Opportunities",
+  description:
+    "Explore internship opportunities in Kerala for students, graduates and freshers across IT and non-IT fields.",
+  heading: "Internships in Kerala",
+  intro:
+    "Discover internships, trainee programs and learning opportunities available to students, graduates and freshers across Kerala.",
+
+  image:
+    "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=90",
+
+  keywords: [
+    "internships Kerala",
+    "internship jobs Kerala",
+    "IT internship Kerala",
+    "fresher internship Kerala",
+    "student internship Kerala",
+  ],
+
+  related: [
+    "fresher-jobs-kerala",
+    "graduate-jobs-kerala",
+    "it-jobs-kerala",
+    "entry-level-jobs-kerala",
+  ],
+},
+
+"work-from-home-jobs-kerala": {
+  title: "Work From Home Jobs in Kerala",
+  metaTitle: "Work From Home Jobs in Kerala | Remote Jobs",
+  description:
+    "Discover remote and work-from-home career opportunities relevant to job seekers in Kerala.",
+  heading: "Work From Home Jobs in Kerala",
+  intro:
+    "Explore remote and work-from-home opportunities that Kerala job seekers can apply for.",
+
+  image:
+    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=90",
+
+  keywords: [
+    "work from home jobs Kerala",
+    "remote jobs Kerala",
+    "online jobs Kerala",
+    "WFH jobs Kerala",
+  ],
+
+  related: [
+    "it-jobs-kerala",
+    "fresher-jobs-kerala",
+    "part-time-jobs-kerala",
+  ],
+},
 
   "part-time-jobs-kerala": {
     title: "Part Time Jobs in Kerala",
@@ -745,98 +785,130 @@ export const seoPages = {
   // IT PARK PAGES
   // =========================================================
 
-  "infopark-jobs": {
-    title: "Infopark Jobs",
-    metaTitle: "Infopark Kochi Jobs | IT, Software & Fresher Jobs",
-    description:
-      "Explore Infopark Kochi job updates including software, testing, developer, support, HR and fresher opportunities.",
-    heading: "Infopark Kochi Jobs",
-    intro:
-      "Kerala IT Park Jobs shares career opportunities related to companies operating in and around Infopark Kochi.",
-    keywords: [
-      "Infopark jobs",
-      "Infopark Kochi jobs",
-      "Infopark vacancies",
-      "IT jobs Infopark",
-      "fresher jobs Infopark",
-      "jobs Kakkanad",
-    ],
-    related: [
-      "jobs-in-kakkanad",
-      "jobs-in-kochi",
-      "it-jobs-kerala",
-      "software-jobs-kerala",
-      "fresher-jobs-kerala",
-    ],
-  },
+ "infopark-jobs": {
+  title: "Infopark Jobs",
 
-  "technopark-jobs": {
-    title: "Technopark Jobs",
-    metaTitle: "Technopark Trivandrum Jobs | IT & Fresher Jobs",
-    description:
-      "Explore Technopark Trivandrum jobs including software, developer, testing, support and fresher opportunities.",
-    heading: "Technopark Trivandrum Jobs",
-    intro:
-      "Stay updated with employment opportunities from companies in and around Technopark Trivandrum.",
-    keywords: [
-      "Technopark jobs",
-      "Technopark Trivandrum jobs",
-      "Technopark vacancies",
-      "IT jobs Technopark",
-      "fresher jobs Technopark",
-    ],
-    related: [
-      "jobs-in-trivandrum",
-      "it-jobs-kerala",
-      "software-jobs-kerala",
-      "fresher-jobs-kerala",
-    ],
-  },
+  metaTitle: "Infopark Kochi Jobs | IT, Software & Fresher Jobs",
 
-  "cyberpark-jobs": {
-    title: "Cyberpark Jobs",
-    metaTitle: "Cyberpark Kozhikode Jobs | IT & Fresher Jobs",
-    description:
-      "Explore Cyberpark Kozhikode jobs and technology career opportunities in Kozhikode and Calicut.",
-    heading: "Cyberpark Kozhikode Jobs",
-    intro:
-      "Stay connected with job opportunities related to Cyberpark Kozhikode and technology companies in the Calicut region.",
-    keywords: [
-      "Cyberpark jobs",
-      "Cyberpark Kozhikode jobs",
-      "Cyberpark vacancies",
-      "IT jobs Calicut",
-      "IT jobs Kozhikode",
-    ],
-    related: [
-      "jobs-in-kozhikode",
-      "jobs-in-calicut",
-      "it-jobs-kerala",
-      "fresher-jobs-kerala",
-    ],
-  },
+  description:
+    "Explore Infopark Kochi job updates including software, testing, developer, support, HR and fresher opportunities.",
 
-  "smartcity-kochi-jobs": {
-    title: "SmartCity Kochi Jobs",
-    metaTitle: "SmartCity Kochi Jobs | Technology & Corporate Careers",
-    description:
-      "Explore technology and private-sector career opportunities related to SmartCity Kochi.",
-    heading: "SmartCity Kochi Jobs",
-    intro:
-      "Explore technology and corporate career opportunities in and around SmartCity Kochi.",
-    keywords: [
-      "SmartCity Kochi jobs",
-      "SmartCity jobs",
-      "IT jobs Kochi",
-      "software jobs Kochi",
-    ],
-    related: [
-      "jobs-in-kochi",
-      "jobs-in-kakkanad",
-      "infopark-jobs",
-      "it-jobs-kerala",
-    ],
-  },
+  heading: "Infopark Kochi Jobs",
+
+  intro:
+    "Kerala IT Park Jobs shares career opportunities related to companies operating in and around Infopark Kochi.",
+
+  image: "/images/infopark-kochi.jpg",
+
+  keywords: [
+    "Infopark jobs",
+    "Infopark Kochi jobs",
+    "Infopark vacancies",
+    "IT jobs Infopark",
+    "fresher jobs Infopark",
+    "jobs Kakkanad",
+  ],
+
+  related: [
+    "jobs-in-kakkanad",
+    "jobs-in-kochi",
+    "it-jobs-kerala",
+    "software-jobs-kerala",
+    "fresher-jobs-kerala",
+  ],
+},
+
+"technopark-jobs": {
+  title: "Technopark Jobs",
+
+  metaTitle: "Technopark Trivandrum Jobs | IT & Fresher Jobs",
+
+  description:
+    "Explore Technopark Trivandrum jobs including software, developer, testing, support and fresher opportunities.",
+
+  heading: "Technopark Trivandrum Jobs",
+
+  intro:
+    "Stay updated with employment opportunities from companies in and around Technopark Trivandrum.",
+
+  image: "/images/technopark-trivandrum.jpg",
+
+  keywords: [
+    "Technopark jobs",
+    "Technopark Trivandrum jobs",
+    "Technopark vacancies",
+    "IT jobs Technopark",
+    "fresher jobs Technopark",
+  ],
+
+  related: [
+    "jobs-in-trivandrum",
+    "it-jobs-kerala",
+    "software-jobs-kerala",
+    "fresher-jobs-kerala",
+  ],
+},
+
+"cyberpark-jobs": {
+  title: "Cyberpark Jobs",
+
+  metaTitle: "Cyberpark Kozhikode Jobs | IT & Fresher Jobs",
+
+  description:
+    "Explore Cyberpark Kozhikode jobs and technology career opportunities in Kozhikode and Calicut.",
+
+  heading: "Cyberpark Kozhikode Jobs",
+
+  intro:
+    "Stay connected with job opportunities related to Cyberpark Kozhikode and technology companies in the Calicut region.",
+
+  image: "/images/cyberpark-kozhikode.jpg",
+
+  keywords: [
+    "Cyberpark jobs",
+    "Cyberpark Kozhikode jobs",
+    "Cyberpark vacancies",
+    "IT jobs Calicut",
+    "IT jobs Kozhikode",
+  ],
+
+  related: [
+    "jobs-in-kozhikode",
+    "jobs-in-calicut",
+    "it-jobs-kerala",
+    "fresher-jobs-kerala",
+  ],
+},
+
+"smartcity-kochi-jobs": {
+  title: "SmartCity Kochi Jobs",
+
+  metaTitle: "SmartCity Kochi Jobs | Technology & Corporate Careers",
+
+  description:
+    "Explore technology and private-sector career opportunities related to SmartCity Kochi.",
+
+  heading: "SmartCity Kochi Jobs",
+
+  intro:
+    "Explore technology and corporate career opportunities in and around SmartCity Kochi.",
+
+  image: "/images/smartcity-kochi.jpg",
+
+  keywords: [
+    "SmartCity Kochi jobs",
+    "SmartCity jobs",
+    "IT jobs Kochi",
+    "software jobs Kochi",
+  ],
+
+  related: [
+    "jobs-in-kochi",
+    "jobs-in-kakkanad",
+    "infopark-jobs",
+    "it-jobs-kerala",
+  ],
+},
 
   // =========================================================
   // SOFTWARE / IT ROLE PAGES

@@ -1,6 +1,6 @@
 import Hero from "@/components/home/Hero";
 import PopularSearches from "@/components/home/PopularSearches";
-import Categories from "@/components/home/Categories";
+import Categories from "@/components/home/categories/Categories";
 import Locations from "@/components/home/Locations";
 import ITParks from "@/components/home/ITParks";
 import JobRoles from "@/components/home/JobRoles";
@@ -15,15 +15,16 @@ export default function Home() {
     <>
       <Hero />
 
-      <PopularSearches />
+      {/* <PopularSearches /> */}
+       <ITParks />
 
       <Categories />
 
-      <Locations />
+  <JobRoles />
 
-      <ITParks />
+      <Locations /> 
 
-      <JobRoles />
+    
 
       <ResourcesPage/>
 
