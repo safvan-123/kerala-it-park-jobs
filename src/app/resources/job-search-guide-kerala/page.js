@@ -3,60 +3,129 @@ import Link from "next/link";
 import Breadcrumb from "@/components/common/Breadcrumb";
 
 export const metadata = {
-  title: "Job Search Guide for Freshers in Kerala | Kerala IT Park Jobs",
+  title:
+    "Job Search Guide for Freshers in Kerala | IT Jobs & Career Tips",
 
   description:
-    "A practical job search guide for freshers in Kerala covering career direction, resume preparation, applications, networking, interviews and job search safety.",
+    "Practical job search guide for freshers in Kerala covering IT jobs, fresher jobs, resume preparation, applications, networking, interviews, job portals and safe job searching.",
 
   alternates: {
     canonical: "/resources/job-search-guide-kerala",
+  },
+
+  openGraph: {
+    title:
+      "Job Search Guide for Freshers in Kerala | Kerala IT Park Jobs",
+    description:
+      "Learn how to search for IT jobs and fresher opportunities in Kerala with practical tips on resumes, applications, interviews, networking and job search safety.",
+    url: "https://keralaitparkjobs.in/resources/job-search-guide-kerala",
+    siteName: "Kerala IT Park Jobs",
+    type: "article",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 const steps = [
   {
     number: "01",
-    title: "Choose Your Target Role",
-    text: "Identify two or three realistic roles based on your education, skills and interests. A clear target helps you prepare a better resume and search more effectively.",
+    title: "Choose Your Target IT or Career Role",
+    text: "Identify two or three realistic roles based on your education, skills and interests. A clear target helps you prepare a better resume, build relevant skills and search for suitable Kerala job opportunities more effectively.",
   },
   {
     number: "02",
     title: "Prepare a Focused Resume",
-    text: "Keep your resume relevant to the role. Highlight useful projects, internships, technical skills and measurable achievements instead of adding unnecessary information.",
+    text: "Keep your resume relevant to the role you are targeting. Highlight useful projects, internships, technical skills and measurable achievements instead of adding unnecessary information.",
   },
   {
     number: "03",
     title: "Build Your Online Profile",
-    text: "Keep your LinkedIn, GitHub or portfolio updated when relevant to your career. Employers may review these profiles before contacting you.",
+    text: "Keep your LinkedIn, GitHub or portfolio updated when relevant to your career. IT employers may review these profiles before contacting you for interviews.",
   },
   {
     number: "04",
-    title: "Search Consistently",
-    text: "Check suitable opportunities regularly instead of searching only once every few weeks. Consistency helps you apply earlier to relevant openings.",
+    title: "Search for Jobs Consistently",
+    text: "Check suitable IT jobs, fresher jobs and career opportunities regularly instead of searching only once every few weeks. Applying early can improve your chances of getting noticed.",
   },
   {
     number: "05",
     title: "Apply Selectively",
-    text: "Read the requirements carefully and apply when your profile reasonably matches the opportunity. Quality applications are usually better than completely random applications.",
+    text: "Read the requirements carefully and apply when your education, skills and experience reasonably match the opportunity. Focused applications are usually more useful than random applications.",
   },
   {
     number: "06",
     title: "Track Your Applications",
-    text: "Maintain a simple list of company, role, date applied, status and follow-up. This keeps your job search organized.",
+    text: "Maintain a simple list of company name, job role, location, date applied, application status and follow-up. This keeps your Kerala job search organized.",
   },
 ];
 
 const safetyTips = [
-  "Verify the company and role before sharing sensitive information.",
+  "Verify the company and job role before sharing sensitive information.",
   "Be cautious if someone asks for money simply to attend an interview.",
   "Read the official job description whenever it is available.",
-  "Check email domains and company websites when communication looks suspicious.",
+  "Check recruiter email domains and company websites when communication looks suspicious.",
   "Never share passwords, OTPs or banking credentials with recruiters.",
 ];
 
 export default function JobSearchGuidePage() {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Job Search Guide for Freshers in Kerala",
+    description:
+      "Practical job search guide for freshers in Kerala covering IT jobs, resume preparation, applications, interviews, networking and job search safety.",
+    url: "https://keralaitparkjobs.in/resources/job-search-guide-kerala",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id":
+        "https://keralaitparkjobs.in/resources/job-search-guide-kerala",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Kerala IT Park Jobs",
+      url: "https://keralaitparkjobs.in",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Career Resources",
+        item: "https://keralaitparkjobs.in/resources",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Job Search Guide for Freshers in Kerala",
+        item:
+          "https://keralaitparkjobs.in/resources/job-search-guide-kerala",
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
       <Breadcrumb
         items={[
           { name: "Career Resources", href: "/resources" },
@@ -79,10 +148,10 @@ export default function JobSearchGuidePage() {
             </h1>
 
             <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8 md:text-lg">
-              A successful job search is not only about sending more
-              applications. It is about improving your profile, choosing the
-              right opportunities and staying consistent long enough to find
-              the right match.
+              Learn how to search for IT jobs, software jobs and fresher
+              opportunities in Kerala with a practical approach to resume
+              preparation, applications, networking, interviews and safe job
+              searching.
             </p>
           </div>
         </div>
@@ -97,19 +166,21 @@ export default function JobSearchGuidePage() {
             </p>
 
             <h2 className="mt-3 text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl">
-              Stop Applying Without a Direction
+              Build a Clear Job Search Strategy
             </h2>
           </div>
 
           <div className="space-y-4 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
             <p>
-              Many freshers apply to completely different roles using the same
-              resume. That can make the job search less effective.
+              Many freshers apply to completely different jobs using the same
+              resume. This can make the job search less effective and make it
+              harder for recruiters to understand where you fit.
             </p>
 
             <p>
-              Start by deciding what you are targeting. Then prepare your
-              resume, projects and interview skills around that direction.
+              Start by identifying your target role. Then prepare your resume,
+              projects, technical skills and interview preparation around that
+              direction before applying for jobs in Kerala.
             </p>
           </div>
         </div>
@@ -124,8 +195,13 @@ export default function JobSearchGuidePage() {
             </p>
 
             <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
-              6 Steps to Improve Your Job Search
+              6 Steps to Find Jobs in Kerala More Effectively
             </h2>
+
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+              Use these steps to improve your chances when searching for IT
+              jobs, software jobs, internships and fresher opportunities.
+            </p>
           </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -151,6 +227,84 @@ export default function JobSearchGuidePage() {
         </div>
       </section>
 
+      {/* WHERE TO SEARCH */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
+              Kerala IT Job Search
+            </p>
+
+            <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
+              Where Freshers Can Search for IT Jobs in Kerala
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+              Search across major Kerala IT hubs, city-based opportunities and
+              role-specific pages instead of depending on only one job source.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <Link
+              href="/infopark-jobs"
+              className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Infopark Jobs
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Explore IT and software career opportunities around Infopark
+                Kochi.
+              </p>
+            </Link>
+
+            <Link
+              href="/technopark-jobs"
+              className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Technopark Jobs
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Explore IT and fresher opportunities around Technopark
+                Trivandrum.
+              </p>
+            </Link>
+
+            <Link
+              href="/cyberpark-jobs"
+              className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Cyberpark Jobs
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Search for software and IT career opportunities around
+                Cyberpark Kozhikode.
+              </p>
+            </Link>
+
+            <Link
+              href="/it-jobs-kerala"
+              className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                IT Jobs in Kerala
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Explore broader IT and software career opportunities across
+                Kerala.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* DAILY ROUTINE */}
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -165,10 +319,10 @@ export default function JobSearchGuidePage() {
 
             <div className="mt-8 grid gap-4 md:grid-cols-4">
               {[
-                ["20 Min", "Search relevant vacancies"],
-                ["20 Min", "Apply carefully"],
-                ["20 Min", "Improve one career skill"],
-                ["10 Min", "Track applications"],
+                ["20 Min", "Search relevant IT and fresher vacancies"],
+                ["20 Min", "Apply carefully to suitable roles"],
+                ["20 Min", "Improve one technical or career skill"],
+                ["10 Min", "Track applications and follow-ups"],
               ].map(([time, text]) => (
                 <div
                   key={text}
@@ -183,6 +337,65 @@ export default function JobSearchGuidePage() {
         </div>
       </section>
 
+      {/* FRESHER PREPARATION */}
+      <section className="bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
+              Fresher Preparation
+            </p>
+
+            <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
+              Improve Your Profile Before Applying
+            </h2>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <Link
+              href="/resources/resume-guide-for-freshers"
+              className="group rounded-[24px] border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Resume Preparation
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Create a focused fresher resume that clearly presents your
+                skills, projects and relevant experience.
+              </p>
+            </Link>
+
+            <Link
+              href="/resources/interview-preparation"
+              className="group rounded-[24px] border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Interview Preparation
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Practice common HR questions, technical preparation and
+                communication before attending interviews.
+              </p>
+            </Link>
+
+            <Link
+              href="/resources/placement-preparation"
+              className="group rounded-[24px] border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Placement Preparation
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Prepare systematically for campus placements and entry-level
+                recruitment opportunities.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* SAFETY */}
       <section className="bg-[#F8FAFC] py-16 sm:py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -191,8 +404,14 @@ export default function JobSearchGuidePage() {
           </p>
 
           <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl">
-            Check Opportunities Before You Proceed
+            Check Job Opportunities Before You Proceed
           </h2>
+
+          <p className="mt-4 text-sm leading-7 text-gray-600 sm:text-base">
+            Freshers should verify recruiters, employers and job descriptions
+            carefully before sharing personal information or proceeding with an
+            application.
+          </p>
 
           <div className="mt-8 space-y-3">
             {safetyTips.map((tip) => (
@@ -213,12 +432,13 @@ export default function JobSearchGuidePage() {
       <section className="bg-[#11194F] py-16 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Stay Consistent Even When Results Take Time
+            Start Your Kerala Job Search with a Clear Plan
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-300 sm:text-base">
-            Job searching can take time. Use that time to keep improving your
-            resume, skills, projects and interview readiness.
+            Keep improving your resume, technical skills, projects and
+            interview preparation while regularly exploring suitable IT and
+            fresher opportunities.
           </p>
 
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
@@ -233,7 +453,7 @@ export default function JobSearchGuidePage() {
               href="/fresher-jobs-kerala"
               className="rounded-xl border border-white/20 px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-white/10"
             >
-              Explore Fresher Opportunities
+              Explore Fresher Jobs in Kerala
             </Link>
           </div>
         </div>

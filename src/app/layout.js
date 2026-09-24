@@ -1,4 +1,4 @@
-import "./globals.css";
+// import "./globals.css";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -8,35 +8,27 @@ export const metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
 
   title: {
-    default: "Kerala Jobs 2026 | IT, Fresher, Government & Private Jobs",
+    default: "Kerala IT Park Jobs | IT & Fresher Jobs in Kerala 2026",
     template: "%s | Kerala IT Park Jobs",
   },
 
   description:
-    "Find latest jobs in Kerala including IT jobs, fresher jobs, government jobs, private jobs, internships, walk-in interviews, Infopark jobs, Technopark jobs and Cyberpark jobs.",
+    "Find IT jobs and fresher jobs in Kerala including Infopark jobs, Technopark jobs, Cyberpark jobs, software jobs, internships, walk-in interviews, private jobs and career opportunities.",
 
-  keywords: [
-    "Kerala jobs",
-    "Kerala IT jobs",
-    "jobs in Kerala",
-    "Kerala job vacancy",
-    "latest jobs Kerala",
-    "IT jobs Kerala",
-    "IT Park Jobs in Kerala",
-    "fresher jobs Kerala",
-    "government jobs Kerala",
-    "private jobs Kerala",
-    "Infopark jobs",
-    "Technopark jobs",
-    "Cyberpark jobs",
-    "jobs in Kochi",
-    "jobs in Trivandrum",
-    "jobs in Calicut",
+  applicationName: "Kerala IT Park Jobs",
+
+  authors: [
+    {
+      name: "Kerala IT Park Jobs",
+      url: siteConfig.siteUrl,
+    },
   ],
 
-  alternates: {
-    canonical: "/",
-  },
+  creator: "Kerala IT Park Jobs",
+
+  publisher: "Kerala IT Park Jobs",
+
+  category: "Jobs and Careers",
 
   icons: {
     icon: "/favicon.ico",
@@ -44,10 +36,10 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Kerala Jobs 2026 | Kerala IT Park Jobs",
+    title: "Kerala IT Park Jobs | IT & Fresher Jobs in Kerala 2026",
 
     description:
-      "Latest IT, non-IT, fresher, government and private job updates from across Kerala.",
+      "Explore IT jobs, fresher opportunities, software careers, Infopark jobs, Technopark jobs and Cyberpark jobs across Kerala.",
 
     url: siteConfig.siteUrl,
 
@@ -61,10 +53,10 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Kerala Jobs 2026 | Kerala IT Park Jobs",
+    title: "Kerala IT Park Jobs | IT & Fresher Jobs in Kerala",
 
     description:
-      "Latest Kerala IT, fresher, government and private job updates.",
+      "Explore Kerala IT jobs, fresher jobs, software careers, Infopark, Technopark and Cyberpark opportunities.",
   },
 
   robots: {
@@ -74,6 +66,9 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
 };
@@ -83,33 +78,52 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "Organization",
 
+    "@id": `${siteConfig.siteUrl}/#organization`,
+
     name: siteConfig.name,
+
+    alternateName: "Kerala IT Park Jobs",
 
     url: siteConfig.siteUrl,
 
-    logo: `${siteConfig.siteUrl}/favicon.ico`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteConfig.siteUrl}/images/kerala_it_park_jobs_ (1).jpeg`,
+      contentUrl: `${siteConfig.siteUrl}/images/kerala_it_park_jobs_ (1).jpeg`,
+    },
 
-    description: siteConfig.description,
+    description:
+      "Kerala IT Park Jobs is a Kerala-focused jobs and career platform covering IT jobs, fresher opportunities, software careers, Infopark, Technopark, Cyberpark and career resources.",
 
-    sameAs: [
-      siteConfig.instagramUrl,
-      siteConfig.whatsappChannelUrl,
-    ].filter((url) => url && url !== "#"),
+    sameAs: [siteConfig.instagramUrl].filter(
+      (url) => url && url !== "#"
+    ),
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
 
+    "@id": `${siteConfig.siteUrl}/#website`,
+
     name: siteConfig.name,
+
+    alternateName: "Kerala IT Park Jobs",
 
     url: siteConfig.siteUrl,
 
-    description: siteConfig.description,
+    description:
+      "Kerala IT jobs and career platform covering fresher jobs, software careers, Infopark jobs, Technopark jobs, Cyberpark jobs and opportunities across Kerala.",
+
+    publisher: {
+      "@id": `${siteConfig.siteUrl}/#organization`,
+    },
+
+    inLanguage: "en-IN",
   };
 
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <body>
         <script
           type="application/ld+json"

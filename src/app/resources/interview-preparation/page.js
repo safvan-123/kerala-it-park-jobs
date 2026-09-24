@@ -1,48 +1,117 @@
-import Link from "next/link";
+// import Link from "next/link";
 
 import Breadcrumb from "@/components/common/Breadcrumb";
 
 export const metadata = {
-  title: "Interview Preparation for Freshers | Kerala IT Park Jobs",
+  title:
+    "IT Interview Preparation for Freshers | Questions & Tips | Kerala IT Park Jobs",
 
   description:
-    "Interview preparation guide for freshers covering HR questions, communication, technical preparation, interview behaviour and practical tips.",
+    "IT interview preparation guide for freshers covering HR questions, software job interviews, technical preparation, communication, projects, interview behaviour and practical tips.",
 
   alternates: {
     canonical: "/resources/interview-preparation",
+  },
+
+  openGraph: {
+    title:
+      "IT Interview Preparation for Freshers | Kerala IT Park Jobs",
+    description:
+      "Prepare for IT and software job interviews with common HR questions, technical preparation tips, communication guidance and practical fresher interview advice.",
+    url: "https://keralaitparkjobs.in/resources/interview-preparation",
+    siteName: "Kerala IT Park Jobs",
+    type: "article",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 const questions = [
   {
     question: "Tell me about yourself.",
-    tip: "Give a short introduction covering education, relevant skills, projects and the type of opportunity you are seeking.",
+    tip: "Give a short introduction covering your education, technical skills, projects, internships and the type of IT or software opportunity you are seeking.",
   },
   {
     question: "Why do you want this role?",
-    tip: "Connect your interests and current skills to the role instead of giving a generic answer.",
+    tip: "Connect your interests, technical skills and career goals to the job description instead of giving a generic answer.",
   },
   {
     question: "What are your strengths?",
-    tip: "Choose strengths you can support with an example from a project, academic activity, internship or real experience.",
+    tip: "Choose strengths you can support with examples from projects, academics, internships, teamwork or practical development experience.",
   },
   {
     question: "What is one area you are improving?",
-    tip: "Choose a genuine area and explain what you are doing to improve it.",
+    tip: "Choose a genuine area and explain the practical steps you are taking to improve it.",
   },
   {
     question: "Why should we hire you?",
-    tip: "Focus on your relevant skills, learning ability, attitude and how you can contribute to the role.",
+    tip: "Focus on your relevant technical skills, learning ability, attitude, problem-solving approach and how you can contribute to the role.",
   },
   {
     question: "Where do you see yourself in a few years?",
-    tip: "Show that you want to build capability, take responsibility and grow professionally.",
+    tip: "Show that you want to improve your technical capability, take more responsibility and grow professionally.",
   },
 ];
 
 export default function InterviewPreparationPage() {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "IT Interview Preparation for Freshers",
+    description:
+      "Interview preparation guide for freshers covering HR questions, technical preparation, software job interviews, communication and practical tips.",
+    url: "https://keralaitparkjobs.in/resources/interview-preparation",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id":
+        "https://keralaitparkjobs.in/resources/interview-preparation",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Kerala IT Park Jobs",
+      url: "https://keralaitparkjobs.in",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Career Resources",
+        item: "https://keralaitparkjobs.in/resources",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Interview Preparation",
+        item:
+          "https://keralaitparkjobs.in/resources/interview-preparation",
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
       <Breadcrumb
         items={[
           { name: "Career Resources", href: "/resources" },
@@ -55,17 +124,18 @@ export default function InterviewPreparationPage() {
 
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
           <span className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8] shadow-sm">
-            Interview Preparation
+            IT Interview Preparation
           </span>
 
           <h1 className="mt-6 text-3xl font-bold leading-tight text-[#11194F] sm:text-4xl md:text-5xl lg:text-6xl">
-            Prepare to Communicate Your Value Clearly
+            IT Interview Preparation for Freshers
           </h1>
 
           <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8 md:text-lg">
-            Interviews are not only tests of knowledge. They are opportunities
-            to explain your skills, thinking, experience and potential clearly.
-            Preparation helps you do that with greater confidence.
+            Prepare for software and IT job interviews with practical guidance
+            on HR questions, technical preparation, projects, communication and
+            interview behaviour. Good preparation helps you explain your skills,
+            experience and potential clearly.
           </p>
         </div>
       </section>
@@ -76,16 +146,16 @@ export default function InterviewPreparationPage() {
           <div className="grid gap-5 md:grid-cols-3">
             {[
               {
-                title: "Know the Company",
-                text: "Understand what the company does, the role you are interviewing for and why the opportunity interests you.",
+                title: "Know the Company & Job Role",
+                text: "Understand what the company does, review the job description and identify the technical and communication skills expected for the role.",
               },
               {
-                title: "Know Your Resume",
-                text: "Be ready to explain every important skill, project, internship and achievement you included.",
+                title: "Know Your Resume & Projects",
+                text: "Be ready to explain every important skill, project, internship, technology and achievement mentioned in your resume.",
               },
               {
-                title: "Practice Speaking",
-                text: "Practice answering questions aloud. Clear communication improves through repetition, not only reading.",
+                title: "Practice Speaking Clearly",
+                text: "Practice answering interview questions aloud. Clear communication improves through repetition, examples and regular practice.",
               },
             ].map((item, index) => (
               <div
@@ -114,12 +184,17 @@ export default function InterviewPreparationPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
-              HR Round
+              HR Interview Questions
             </p>
 
             <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
-              Common Questions You Should Practice
+              Common IT Interview Questions for Freshers
             </h2>
+
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+              Practice these common fresher interview questions before applying
+              for software developer, testing, support, data and other IT jobs.
+            </p>
           </div>
 
           <div className="mt-10 space-y-4">
@@ -149,8 +224,63 @@ export default function InterviewPreparationPage() {
         </div>
       </section>
 
-      {/* BEFORE INTERVIEW */}
+      {/* TECHNICAL PREPARATION */}
       <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
+              Technical Round
+            </p>
+
+            <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
+              Prepare for Technical IT Interviews
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base">
+              Technical interview preparation should match the job role you are
+              applying for. Focus on your fundamentals, practical projects and
+              the technologies mentioned in the job description.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                title: "Revise Fundamentals",
+                text: "Review the core concepts related to your role such as programming basics, databases, web development, testing or networking.",
+              },
+              {
+                title: "Prepare Your Projects",
+                text: "Be ready to explain what you built, your responsibilities, technologies used, challenges faced and how you solved them.",
+              },
+              {
+                title: "Practice Problem Solving",
+                text: "Practice basic coding, debugging, logical reasoning or role-specific technical questions based on the position you are targeting.",
+              },
+            ].map((item, index) => (
+              <div
+                key={item.title}
+                className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+              >
+                <span className="text-xs font-bold text-[#3047D8]">
+                  0{index + 1}
+                </span>
+
+                <h3 className="mt-4 text-xl font-bold text-[#11194F]">
+                  {item.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-7 text-gray-600">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BEFORE INTERVIEW */}
+      <section className="bg-[#F8FAFC] py-16 sm:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <div className="rounded-[28px] bg-[#11194F] p-6 text-white sm:p-8">
             <h2 className="text-2xl font-bold sm:text-3xl">
@@ -159,14 +289,16 @@ export default function InterviewPreparationPage() {
 
             <div className="mt-6 grid gap-3 md:grid-cols-2">
               {[
-                "Review the job description",
-                "Review your resume",
+                "Review the complete job description",
+                "Review your resume carefully",
                 "Prepare two or three project explanations",
+                "Revise important technical concepts",
                 "Check camera, microphone and internet for online interviews",
                 "Keep required documents ready",
                 "Join or arrive a little early",
                 "Prepare one or two questions for the interviewer",
                 "Keep your answers concise and relevant",
+                "Research the company and its products or services",
               ].map((item) => (
                 <div
                   key={item}
@@ -180,6 +312,64 @@ export default function InterviewPreparationPage() {
         </div>
       </section>
 
+      {/* RELATED RESOURCES */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
+              Career Resources
+            </p>
+
+            <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl">
+              Continue Your IT Job Preparation
+            </h2>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <Link
+              href="/resources/placement-preparation"
+              className="rounded-2xl border border-gray-200 bg-[#F8FAFC] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#3047D8]/30 hover:shadow-md"
+            >
+              <h3 className="font-bold text-[#11194F]">
+                Placement Preparation
+              </h3>
+
+              <p className="mt-2 text-sm leading-7 text-gray-600">
+                Prepare your resume, skills and application strategy before
+                attending placement opportunities.
+              </p>
+            </Link>
+
+            <Link
+              href="/it-jobs-kerala"
+              className="rounded-2xl border border-gray-200 bg-[#F8FAFC] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#3047D8]/30 hover:shadow-md"
+            >
+              <h3 className="font-bold text-[#11194F]">
+                IT Jobs in Kerala
+              </h3>
+
+              <p className="mt-2 text-sm leading-7 text-gray-600">
+                Explore IT and software career opportunities from across Kerala.
+              </p>
+            </Link>
+
+            <Link
+              href="/fresher-jobs-kerala"
+              className="rounded-2xl border border-gray-200 bg-[#F8FAFC] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#3047D8]/30 hover:shadow-md"
+            >
+              <h3 className="font-bold text-[#11194F]">
+                Fresher Jobs in Kerala
+              </h3>
+
+              <p className="mt-2 text-sm leading-7 text-gray-600">
+                Find career information and opportunities suitable for fresh
+                graduates and entry-level candidates.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[#F8FAFC] py-16">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="text-2xl font-bold text-[#11194F] sm:text-3xl">
@@ -187,9 +377,10 @@ export default function InterviewPreparationPage() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
-            Every interview gives you information about what employers ask,
-            where your knowledge is strong and what you should improve next.
-            Use that feedback to become better prepared for the next one.
+            Every interview helps you understand what employers ask, where
+            your knowledge is strong and what you should improve next. Use that
+            experience to become better prepared for your next IT job
+            interview.
           </p>
 
           <Link

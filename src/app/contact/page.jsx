@@ -4,13 +4,27 @@ import Breadcrumb from "@/components/common/Breadcrumb";
 import { siteConfig } from "@/data/siteConfig";
 
 export const metadata = {
-  title: "Contact Kerala IT Park Jobs",
+  title: "Contact Kerala IT Park Jobs | Employer & Recruitment Enquiries",
 
   description:
-    "Contact Kerala IT Park Jobs for job updates, collaborations, employer enquiries and Kerala career community information.",
+    "Contact Kerala IT Park Jobs for employer enquiries, recruitment promotions, collaborations, Kerala job updates and career community information through WhatsApp, Instagram or phone.",
 
   alternates: {
     canonical: "/contact",
+  },
+
+  openGraph: {
+    title: "Contact Kerala IT Park Jobs | Employer & Recruitment Enquiries",
+    description:
+      "Contact Kerala IT Park Jobs for employer enquiries, recruitment promotions, collaborations and Kerala career community information.",
+    url: "https://keralaitparkjobs.in/contact",
+    siteName: "Kerala IT Park Jobs",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -18,8 +32,37 @@ const whatsappChatUrl = "https://wa.me/917560929242";
 const phoneCallUrl = "tel:+917907806819";
 
 export default function ContactPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Kerala IT Park Jobs",
+    url: "https://keralaitparkjobs.in/contact",
+    description:
+      "Contact Kerala IT Park Jobs for employer enquiries, recruitment promotions, collaborations and Kerala career community information.",
+    mainEntity: {
+      "@type": "Organization",
+      name: "Kerala IT Park Jobs",
+      url: "https://keralaitparkjobs.in",
+      sameAs: [siteConfig.instagramUrl],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-7907806819",
+        contactType: "customer support",
+        areaServed: "IN",
+        availableLanguage: ["English", "Malayalam"],
+      },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+
       <Breadcrumb
         items={[
           {
@@ -52,36 +95,35 @@ export default function ContactPage() {
               </span>
             </div>
 
-          
- {/* LOGO + TITLE */}
-<div className="mt-6">
-  {/* FIRST LINE - CENTERED LOGO */}
-  <div className="flex justify-center">
-   <div className="group relative isolate h-[48px] w-[48px] shrink-0 overflow-hidden rounded-full border-2 border-white bg-white shadow-[0_8px_24px_rgba(17,25,79,0.14)] sm:h-[52px] sm:w-[52px] md:h-14 md:w-14">
-  <Image
-    src="/images/kerala_it_park_jobs_ (1).jpeg"
-    alt="Kerala IT Park Jobs"
-    fill
-    sizes="(max-width: 640px) 48px, (max-width: 768px) 52px, 56px"
-    className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
-    priority
-  />
+            {/* LOGO + TITLE */}
+            <div className="mt-6">
+              {/* FIRST LINE - CENTERED LOGO */}
+              <div className="flex justify-center">
+                <div className="group relative isolate h-[48px] w-[48px] shrink-0 overflow-hidden rounded-full border-2 border-white bg-white shadow-[0_8px_24px_rgba(17,25,79,0.14)] sm:h-[52px] sm:w-[52px] md:h-14 md:w-14">
+                  <Image
+                    src="/images/kerala_it_park_jobs_ (1).jpeg"
+                    alt="Kerala IT Park Jobs"
+                    fill
+                    sizes="(max-width: 640px) 48px, (max-width: 768px) 52px, 56px"
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.06]"
+                    priority
+                  />
 
-  <span className="pointer-events-none absolute inset-0 z-10 rounded-full ring-1 ring-[#3047D8]/10" />
-</div>
-  </div>
+                  <span className="pointer-events-none absolute inset-0 z-10 rounded-full ring-1 ring-[#3047D8]/10" />
+                </div>
+              </div>
 
-  {/* SECOND LINE - CENTERED TITLE */}
-  <h1 className="mt-4 text-center text-3xl font-bold leading-tight text-[#11194F] sm:text-4xl md:text-5xl lg:text-6xl">
-    Connect with Kerala IT Park Jobs
-  </h1>
-</div>
+              {/* SECOND LINE - CENTERED TITLE */}
+              <h1 className="mt-4 text-center text-3xl font-bold leading-tight text-[#11194F] sm:text-4xl md:text-5xl lg:text-6xl">
+                Contact Kerala IT Park Jobs
+              </h1>
+            </div>
 
             {/* DESCRIPTION */}
             <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8 md:text-lg">
-              Reach us for collaborations, employer enquiries, community
-              information and Kerala career updates through Instagram,
-              WhatsApp or phone.
+              Contact Kerala IT Park Jobs for employer enquiries, recruitment
+              promotions, collaborations and career community information
+              through Instagram, WhatsApp or phone.
             </p>
 
             {/* QUICK CONTACT */}
@@ -122,12 +164,12 @@ export default function ContactPage() {
             </p>
 
             <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
-              Choose How You Want to Connect
+              Connect with Kerala IT Park Jobs
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
-              Connect with Kerala IT Park Jobs using the option that is most
-              convenient for you.
+              Choose Instagram, WhatsApp or phone for employer enquiries,
+              recruitment promotions, collaborations and other information.
             </p>
           </div>
 
@@ -140,10 +182,8 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="group relative flex min-h-[300px] flex-col overflow-hidden rounded-[26px] border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-pink-300 hover:shadow-[0_20px_50px_rgba(17,25,79,0.10)]"
             >
-              {/* TOP LINE */}
               <div className="absolute left-0 top-0 h-1 w-0 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 transition-all duration-500 group-hover:w-full" />
 
-              {/* GLOW */}
               <div className="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-pink-500/5 transition-all duration-500 group-hover:scale-150 group-hover:bg-pink-500/10" />
 
               <div className="relative z-10 flex h-full flex-col">
@@ -166,8 +206,8 @@ export default function ContactPage() {
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-gray-600">
-                  Follow our page for Kerala job updates and connect with us
-                  through Instagram.
+                  Follow Kerala IT Park Jobs for Kerala IT jobs, fresher
+                  opportunities, recruitment updates and career information.
                 </p>
 
                 <div className="mt-auto pt-6">
@@ -213,8 +253,8 @@ export default function ContactPage() {
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-gray-600">
-                  Join our WhatsApp Channel for regular Kerala career and
-                  recruitment updates.
+                  Join the Kerala IT Park Jobs WhatsApp Channel for regular
+                  Kerala job, career and recruitment updates.
                 </p>
 
                 <div className="mt-auto pt-6">
@@ -260,8 +300,8 @@ export default function ContactPage() {
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-gray-600">
-                  Send us a direct WhatsApp message for collaborations,
-                  employer enquiries or other information.
+                  Send us a direct WhatsApp message for employer enquiries,
+                  recruitment promotions, collaborations or other information.
                 </p>
 
                 <div className="mt-auto pt-6">
@@ -305,8 +345,8 @@ export default function ContactPage() {
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-gray-600">
-                  Call Kerala IT Park Jobs directly for business,
-                  collaboration and employer-related enquiries.
+                  Call Kerala IT Park Jobs directly for employer, business,
+                  collaboration and recruitment-related enquiries.
                 </p>
 
                 <div className="mt-auto pt-6">
@@ -326,11 +366,11 @@ export default function ContactPage() {
           <div className="mt-8 flex flex-col items-center justify-between gap-5 rounded-2xl border border-gray-200 bg-[#F8FAFC] p-5 sm:flex-row sm:p-6">
             <div>
               <p className="text-sm font-bold text-[#11194F]">
-                Need to contact us directly?
+                Need to contact Kerala IT Park Jobs directly?
               </p>
 
               <p className="mt-1 text-sm text-gray-500">
-                WhatsApp for messages or call us for direct enquiries.
+                Send us a WhatsApp message or call us for direct enquiries.
               </p>
             </div>
 
@@ -377,8 +417,8 @@ export default function ContactPage() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-300 sm:text-base">
-            Follow our social platforms for Kerala job updates or contact us
-            directly for business and collaboration enquiries.
+            Follow Kerala IT Park Jobs for Kerala IT career updates or contact
+            us directly for employer, recruitment and collaboration enquiries.
           </p>
 
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">

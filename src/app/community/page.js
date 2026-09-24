@@ -2,22 +2,36 @@ import Breadcrumb from "@/components/common/Breadcrumb";
 import { siteConfig } from "@/data/siteConfig";
 
 export const metadata = {
-  title: "Kerala Jobs WhatsApp & Instagram Community",
+  title: "Kerala Jobs WhatsApp Group & Instagram | Kerala IT Park Jobs",
 
   description:
-    "Join Kerala IT Park Jobs on Instagram, WhatsApp Channel and WhatsApp groups for IT jobs, fresher jobs, government jobs and career updates across Kerala.",
+    "Join Kerala IT Park Jobs WhatsApp groups, WhatsApp Channel and Instagram for IT jobs, fresher jobs, Infopark jobs, Technopark jobs, Cyberpark jobs, internships and career updates across Kerala.",
 
   alternates: {
     canonical: "/community",
+  },
+
+  openGraph: {
+    title: "Kerala Jobs WhatsApp Group & Instagram | Kerala IT Park Jobs",
+    description:
+      "Join Kerala IT Park Jobs on WhatsApp and Instagram for IT jobs, fresher opportunities, internships and career updates across Kerala.",
+    url: "/community",
+    siteName: "Kerala IT Park Jobs",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 const communityOptions = [
   {
     type: "INSTAGRAM",
-    title: "Follow Our Instagram",
+    title: "Follow Kerala IT Park Jobs on Instagram",
     description:
-      "Discover regular job posts, fresher opportunities, recruitment updates and career information.",
+      "Discover regular Kerala job posts, IT job vacancies, fresher opportunities, recruitment updates and career information.",
     href: siteConfig.instagramUrl,
     buttonText: "Follow Instagram",
     badgeClass:
@@ -28,9 +42,9 @@ const communityOptions = [
   },
   {
     type: "WHATSAPP CHANNEL",
-    title: "Join WhatsApp Channel",
+    title: "Join Kerala Jobs WhatsApp Channel",
     description:
-      "Receive important Kerala career and recruitment updates directly through WhatsApp.",
+      "Receive important IT jobs, fresher opportunities, internships and Kerala recruitment updates directly through WhatsApp.",
     href: siteConfig.whatsappChannelUrl,
     buttonText: "Join Channel",
     badgeClass: "bg-[#EAFBF0] text-[#159447]",
@@ -39,9 +53,9 @@ const communityOptions = [
   },
   {
     type: "WHATSAPP GROUPS",
-    title: "Join Job Groups",
+    title: "Join Kerala Jobs WhatsApp Groups",
     description:
-      "Connect with our Kerala job communities and stay informed about new career opportunities.",
+      "Connect with our Kerala job communities for IT jobs, private jobs, fresher vacancies, internships and career opportunities.",
     href: siteConfig.whatsappGroupUrl,
     buttonText: "Join Groups",
     badgeClass: "bg-[#F4F7FF] text-[#3047D8]",
@@ -51,8 +65,32 @@ const communityOptions = [
 ];
 
 export default function CommunityPage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Kerala Jobs WhatsApp & Instagram Community",
+    description:
+      "Join Kerala IT Park Jobs on Instagram, WhatsApp Channel and WhatsApp groups for Kerala IT jobs, fresher opportunities, internships and career updates.",
+    url: `${siteConfig.siteUrl}/community`,
+    about: {
+      "@type": "Organization",
+      name: "Kerala IT Park Jobs",
+      url: siteConfig.siteUrl,
+      sameAs: [
+        siteConfig.instagramUrl,
+      ],
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+
       <Breadcrumb
         items={[
           {
@@ -86,8 +124,9 @@ export default function CommunityPage() {
             </h1>
 
             <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8 md:text-lg">
-              Stay connected with Kerala job opportunities through our
-              Instagram page, WhatsApp Channel and WhatsApp job groups.
+              Stay connected with Kerala IT jobs, fresher opportunities,
+              internships and recruitment updates through our Instagram page,
+              WhatsApp Channel and Kerala jobs WhatsApp groups.
             </p>
 
             <div className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-gray-500 sm:text-sm">
@@ -98,12 +137,12 @@ export default function CommunityPage() {
 
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
-                Fresher Friendly
+                Fresher Jobs
               </span>
 
               <span className="inline-flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
-                IT & Non-IT Opportunities
+                IT & Software Jobs
               </span>
             </div>
           </div>
@@ -121,11 +160,12 @@ export default function CommunityPage() {
             </p>
 
             <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
-              Choose How You Want to Get Updates
+              Get Kerala Job Updates on WhatsApp & Instagram
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
-              Connect with Kerala IT Park Jobs through your preferred platform.
+              Connect with Kerala IT Park Jobs through your preferred platform
+              and stay informed about career opportunities from across Kerala.
             </p>
           </div>
 
@@ -205,12 +245,13 @@ export default function CommunityPage() {
           </div>
 
           <h2 className="mt-5 text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Stay Connected. Never Miss an Opportunity.
+            Never Miss Kerala IT Job Opportunities
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-300 sm:text-base">
-            Follow Kerala IT Park Jobs on Instagram and WhatsApp for regular
-            career and recruitment updates from across Kerala.
+            Follow Kerala IT Park Jobs on Instagram and WhatsApp for IT jobs,
+            fresher vacancies, internships and recruitment updates from
+            Infopark, Technopark, Cyberpark and locations across Kerala.
           </p>
 
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">

@@ -7,7 +7,6 @@ export default function robots() {
       allow: "/",
     },
 
-    sitemap:
-      `${siteConfig.siteUrl}/sitemap.xml`,
+    sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
   };
 }

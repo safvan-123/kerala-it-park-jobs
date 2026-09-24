@@ -1,130 +1,229 @@
-import Link from "next/link";
+// import Link from "next/link";
 
 import Breadcrumb from "@/components/common/Breadcrumb";
 
 export const metadata = {
-  title: "Resume Guide for Freshers | Kerala IT Park Jobs",
+  title:
+    "Placement Preparation for Freshers | IT Jobs, Aptitude & Interview Guide",
 
   description:
-    "Learn how to create a professional fresher resume with the right structure, skills, projects, internships and common resume mistakes to avoid.",
+    "Placement preparation guide for freshers covering aptitude, communication, technical interview preparation, projects, resumes, mock interviews and IT job readiness.",
 
   alternates: {
-    canonical: "/resources/resume-guide-for-freshers",
+    canonical: "/resources/placement-preparation",
+  },
+
+  openGraph: {
+    title:
+      "Placement Preparation for Freshers | Kerala IT Park Jobs",
+    description:
+      "Prepare for IT placements with aptitude, communication, technical preparation, projects, resume guidance and mock interview practice.",
+    url: "https://keralaitparkjobs.in/resources/placement-preparation",
+    siteName: "Kerala IT Park Jobs",
+    type: "article",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
-const resumeSections = [
+const areas = [
   {
-    title: "Contact Information",
-    text: "Include your name, phone number, professional email address, location and relevant professional links.",
+    title: "Aptitude & Reasoning",
+    text: "Practise quantitative aptitude, logical reasoning, basic mathematics and problem-solving regularly for fresher placement tests and recruitment assessments.",
   },
   {
-    title: "Professional Summary",
-    text: "Write two or three lines explaining your background, strongest skills and the type of opportunity you are targeting.",
+    title: "Communication Skills",
+    text: "Work on clear introductions, professional speaking, explaining your thoughts confidently and answering HR interview questions in a structured way.",
   },
   {
-    title: "Education",
-    text: "Mention qualification, institution, graduation year and relevant academic information clearly.",
-  },
-  {
-    title: "Skills",
-    text: "List skills that are actually relevant to the position. Avoid adding tools you cannot explain during an interview.",
+    title: "Technical Knowledge",
+    text: "Review programming, database, web, testing or other technical fundamentals related to your target IT role and practise common interview questions.",
   },
   {
     title: "Projects",
-    text: "Projects can be especially valuable for freshers. Explain what you built, what technologies you used and your contribution.",
+    text: "Be ready to explain your project objective, technologies used, implementation, challenges, solutions and your individual contribution.",
   },
   {
-    title: "Internships & Experience",
-    text: "Include internships, freelance work, volunteering or practical experience when it adds value to the role.",
+    title: "Resume",
+    text: "Keep your fresher resume concise, relevant and aligned with the IT or software roles you are targeting.",
+  },
+  {
+    title: "Mock Interviews",
+    text: "Practise with friends, trainers or by recording yourself to improve communication, technical answers and interview confidence.",
   },
 ];
 
-const mistakes = [
-  "Using the same resume for every type of role",
-  "Adding skills you cannot explain",
-  "Long paragraphs instead of concise information",
-  "Spelling or formatting mistakes",
-  "Unprofessional email addresses",
-  "Adding unnecessary personal information",
-  "Listing projects without explaining your contribution",
-];
+export default function PlacementPreparationPage() {
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Placement Preparation Guide for Freshers",
+    description:
+      "Placement preparation guide for freshers covering aptitude, communication, technical preparation, projects, resume building and interview readiness.",
+    url: "https://keralaitparkjobs.in/resources/placement-preparation",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id":
+        "https://keralaitparkjobs.in/resources/placement-preparation",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Kerala IT Park Jobs",
+      url: "https://keralaitparkjobs.in",
+    },
+  };
 
-export default function ResumeGuidePage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Career Resources",
+        item: "https://keralaitparkjobs.in/resources",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Placement Preparation",
+        item:
+          "https://keralaitparkjobs.in/resources/placement-preparation",
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
       <Breadcrumb
         items={[
           { name: "Career Resources", href: "/resources" },
-          { name: "Resume Guide" },
+          { name: "Placement Preparation" },
         ]}
       />
 
+      {/* HERO */}
       <section className="relative overflow-hidden bg-[#F4F7FF] py-16 sm:py-20 lg:py-24">
-        <div className="pointer-events-none absolute -right-20 top-0 h-72 w-72 rounded-full bg-[#3047D8]/10 blur-3xl" />
-
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <span className="inline-flex rounded-full border border-[#3047D8]/10 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8] shadow-sm">
-            Resume Preparation
+          <span className="rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8] shadow-sm">
+            Placement Preparation
           </span>
 
           <h1 className="mt-6 text-3xl font-bold leading-tight text-[#11194F] sm:text-4xl md:text-5xl lg:text-6xl">
-            Resume Guide for Freshers
+            Placement Preparation Guide for Freshers
           </h1>
 
           <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8 md:text-lg">
-            Your resume does not need to be complicated. It needs to make your
-            value easy to understand. A clear, focused resume can help an
-            employer quickly see your skills, projects and potential.
+            Prepare for IT and software placements with a structured approach
+            to aptitude, communication, technical skills, projects, resumes
+            and interviews. Good preparation helps you become ready before
+            the right opportunity arrives.
           </p>
         </div>
       </section>
 
-      {/* MESSAGE */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[28px] border border-[#3047D8]/10 bg-[#F8FAFC] p-6 sm:p-8">
+      {/* AREAS */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
             <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
-              Remember
+              Fresher Placement Preparation
             </p>
 
-            <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl">
-              You Do Not Need Years of Experience to Show Potential
+            <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
+              6 Important Areas to Prepare
             </h2>
 
-            <p className="mt-4 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
-              As a fresher, employers may look at your education, projects,
-              internships, technical skills, communication and willingness to
-              learn. Your resume should make those strengths easy to identify.
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+              Focus on these areas before attending campus placements,
+              walk-in interviews, fresher recruitment drives and IT job
+              interviews.
             </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {areas.map((area, index) => (
+              <div
+                key={area.title}
+                className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+              >
+                <span className="text-xs font-bold text-[#3047D8]">
+                  0{index + 1}
+                </span>
+
+                <h3 className="mt-4 text-xl font-bold text-[#11194F]">
+                  {area.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-7 text-gray-600">
+                  {area.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* STRUCTURE */}
+      {/* TECHNICAL PREPARATION */}
       <section className="bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
-              Resume Structure
+              IT Placement Preparation
             </p>
 
             <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
-              What Your Fresher Resume Should Include
+              Prepare for Technical and Software Job Interviews
             </h2>
+
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+              Your technical preparation should match the role you are
+              targeting. Freshers applying for software and IT jobs should be
+              ready to explain fundamentals, projects and practical skills.
+            </p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {resumeSections.map((item, index) => (
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                title: "Revise Fundamentals",
+                text: "Review important concepts related to programming, databases, web development, testing, networking or your chosen technical area.",
+              },
+              {
+                title: "Prepare Projects",
+                text: "Know how to explain your project flow, technologies used, database structure, features, challenges and your contribution.",
+              },
+              {
+                title: "Practise Questions",
+                text: "Practise coding, debugging, technical questions and role-specific interview problems before attending recruitment processes.",
+              },
+            ].map((item, index) => (
               <div
                 key={item.title}
-                className="group rounded-[24px] border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+                className="group rounded-[24px] border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F4F7FF] text-xs font-bold text-[#3047D8] transition-all duration-300 group-hover:bg-[#3047D8] group-hover:text-white">
+                <span className="text-xs font-bold text-[#3047D8]">
                   0{index + 1}
-                </div>
+                </span>
 
-                <h3 className="mt-5 text-lg font-bold text-[#11194F]">
+                <h3 className="mt-4 text-xl font-bold text-[#11194F]">
                   {item.title}
                 </h3>
 
@@ -137,63 +236,173 @@ export default function ResumeGuidePage() {
         </div>
       </section>
 
-      {/* SAMPLE ORDER */}
+      {/* WEEKLY PLAN */}
       <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
-              Simple Format
-            </p>
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <h2 className="text-center text-2xl font-bold text-[#11194F] sm:text-3xl">
+            A Simple Weekly Placement Preparation Plan
+          </h2>
 
-            <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl">
-              Recommended Fresher Resume Order
-            </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-gray-600 sm:text-base">
+            Follow a simple routine each week instead of trying to prepare
+            everything immediately before an interview.
+          </p>
 
-            <p className="mt-4 text-sm leading-7 text-gray-600 sm:text-base">
-              Keep the most relevant information easy to find. For many
-              freshers, this simple structure works well.
-            </p>
-          </div>
-
-          <div className="space-y-3">
+          <div className="mt-10 space-y-3">
             {[
-              "1. Name & Contact Information",
-              "2. Professional Summary / Career Objective",
-              "3. Education",
-              "4. Technical / Relevant Skills",
-              "5. Projects",
-              "6. Internship / Experience",
-              "7. Certifications or Achievements",
-              "8. Relevant Additional Information",
-            ].map((item) => (
+              ["Monday", "Aptitude + logical reasoning practice"],
+              ["Tuesday", "Programming / technical fundamentals"],
+              ["Wednesday", "Project improvement / portfolio / GitHub"],
+              ["Thursday", "Communication + HR interview questions"],
+              ["Friday", "Technical interview questions + coding practice"],
+              ["Saturday", "Mock interview + resume review"],
+              ["Sunday", "Review progress and plan the next week"],
+            ].map(([day, activity]) => (
               <div
-                key={item}
-                className="rounded-xl border border-gray-200 bg-[#F8FAFC] px-5 py-4 text-sm font-semibold text-[#11194F] transition-all duration-300 hover:translate-x-1 hover:border-[#3047D8]/30"
+                key={day}
+                className="flex flex-col justify-between gap-2 rounded-xl border border-gray-200 bg-white p-4 transition-all duration-300 hover:translate-x-1 hover:border-[#3047D8]/30 sm:flex-row sm:items-center"
               >
-                {item}
+                <span className="font-bold text-[#11194F]">{day}</span>
+
+                <span className="text-sm text-gray-600">{activity}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* MISTAKES */}
-      <section className="bg-[#F8FAFC] py-16 sm:py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#11194F] sm:text-3xl">
-            Common Resume Mistakes to Avoid
-          </h2>
+      {/* RELATED PREPARATION */}
+      <section className="bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
+              Career Preparation
+            </p>
 
-          <div className="mt-8 grid gap-3 md:grid-cols-2">
-            {mistakes.map((mistake) => (
-              <div
-                key={mistake}
-                className="flex gap-3 rounded-xl border border-gray-200 bg-white p-4"
-              >
-                <span className="font-bold text-red-500">×</span>
-                <p className="text-sm leading-7 text-gray-600">{mistake}</p>
-              </div>
-            ))}
+            <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
+              Continue Your IT Job Preparation
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
+              Placement preparation works best when your resume, interview
+              skills and job search strategy are improved together.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <Link
+              href="/resources/interview-preparation"
+              className="group rounded-[24px] border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Interview Preparation
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Practise HR questions, technical interviews, communication and
+                project explanations before attending interviews.
+              </p>
+            </Link>
+
+            <Link
+              href="/resources/resume-guide-for-freshers"
+              className="group rounded-[24px] border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Resume Guide for Freshers
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Build a clear fresher resume highlighting technical skills,
+                projects, internships and relevant achievements.
+              </p>
+            </Link>
+
+            <Link
+              href="/resources/job-search-guide-kerala"
+              className="group rounded-[24px] border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Kerala Job Search Guide
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Learn how to search consistently, choose target roles and
+                improve your job application strategy.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* IT JOB LINKS */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
+              Explore Opportunities
+            </p>
+
+            <h2 className="mt-3 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
+              Explore IT and Fresher Jobs in Kerala
+            </h2>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <Link
+              href="/it-jobs-kerala"
+              className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                IT Jobs in Kerala
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Explore software and technology career opportunities across
+                Kerala.
+              </p>
+            </Link>
+
+            <Link
+              href="/fresher-jobs-kerala"
+              className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Fresher Jobs in Kerala
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Explore entry-level and fresher opportunities across Kerala.
+              </p>
+            </Link>
+
+            <Link
+              href="/infopark-jobs"
+              className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Infopark Jobs
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Explore IT and software career opportunities around Infopark
+                Kochi.
+              </p>
+            </Link>
+
+            <Link
+              href="/technopark-jobs"
+              className="group rounded-[24px] border border-gray-200 p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-lg"
+            >
+              <h3 className="text-lg font-bold text-[#11194F]">
+                Technopark Jobs
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-gray-600">
+                Explore fresher and IT career opportunities around Technopark
+                Trivandrum.
+              </p>
+            </Link>
           </div>
         </div>
       </section>
@@ -201,20 +410,21 @@ export default function ResumeGuidePage() {
       {/* CTA */}
       <section className="bg-[#11194F] py-16 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Your Resume Should Grow as Your Skills Grow
+          <h2 className="text-2xl font-bold sm:text-3xl">
+            Prepare Before the Right IT Opportunity Arrives
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-300 sm:text-base">
-            Review your resume regularly. Every meaningful project,
-            internship, certification or new skill can strengthen your profile.
+            Build your aptitude, communication, technical knowledge, projects
+            and interview readiness consistently so that you are prepared when
+            suitable fresher and IT job opportunities appear.
           </p>
 
           <Link
             href="/resources/interview-preparation"
-            className="mt-7 inline-flex rounded-xl bg-[#3047D8] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#3B5BFF]"
+            className="mt-7 inline-flex rounded-xl bg-[#3047D8] px-6 py-3.5 text-sm font-bold transition-all duration-300 hover:-translate-y-1 hover:bg-[#3B5BFF]"
           >
-            Prepare for Interviews →
+            Start Interview Preparation →
           </Link>
         </div>
       </section>
