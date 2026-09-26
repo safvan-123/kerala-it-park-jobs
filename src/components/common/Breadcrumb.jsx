@@ -1,5 +1,4 @@
-// import Link from "next/link";
-
+import Link from "next/link";
 import { siteConfig } from "@/data/siteConfig";
 
 export default function Breadcrumb({ items = [] }) {
@@ -14,7 +13,6 @@ export default function Breadcrumb({ items = [] }) {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-
     itemListElement: breadcrumbItems.map((item, index) => {
       const isLast = index === breadcrumbItems.length - 1;
 
@@ -22,7 +20,6 @@ export default function Breadcrumb({ items = [] }) {
         "@type": "ListItem",
         position: index + 1,
         name: item.name,
-
         ...(!isLast && item.href
           ? {
               item: `${siteConfig.siteUrl}${item.href}`,
@@ -57,7 +54,7 @@ export default function Breadcrumb({ items = [] }) {
             </li>
 
             {items.map((item, index) => {
-              const last = index === items.length - 1;
+              const isLast = index === items.length - 1;
 
               return (
                 <li
@@ -66,10 +63,10 @@ export default function Breadcrumb({ items = [] }) {
                 >
                   <span aria-hidden="true">/</span>
 
-                  {last || !item.href ? (
+                  {isLast || !item.href ? (
                     <span
                       className="font-medium text-gray-700"
-                      aria-current={last ? "page" : undefined}
+                      aria-current={isLast ? "page" : undefined}
                     >
                       {item.name}
                     </span>
