@@ -4,10 +4,10 @@ export const siteConfig = {
   siteUrl: "https://keralaitparkjobs.in",
 
   description:
-    "Kerala IT Park Jobs shares IT jobs, fresher jobs, software career opportunities, Infopark jobs, Technopark jobs, Cyberpark jobs, internships, walk-in interviews and other job updates across Kerala.",
+    "Kerala IT Park Jobs shares the latest IT jobs, fresher jobs, software careers, Infopark jobs, Technopark jobs, Cyberpark jobs, internships, walk-in interviews and job opportunities across Kerala.",
 
   instagramUrl:
-    "https://www.instagram.com/kerala_it_park_jobs_?stkn=MWZuajhleXRianJ2ZA==",
+    "https://www.instagram.com/kerala_it_park_jobs_/",
 
   whatsappChannelUrl:
     "https://whatsapp.com/channel/0029Vb6l0vi3wtbG1zxFfE0o",

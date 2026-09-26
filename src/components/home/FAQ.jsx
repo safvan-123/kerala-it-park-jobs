@@ -35,11 +35,11 @@ export default function FAQ() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-
+    "@id": "https://keralaitparkjobs.in/#faq",
+    name: "Kerala Jobs Frequently Asked Questions",
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
-
       acceptedAnswer: {
         "@type": "Answer",
         text: faq.answer,
@@ -48,7 +48,10 @@ export default function FAQ() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
+    <section
+      aria-labelledby="faq-heading"
+      className="relative overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -65,8 +68,12 @@ export default function FAQ() {
         {/* HEADER */}
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#3047D8]/10 bg-white px-4 py-2 shadow-sm">
-            <span className="relative flex h-2 w-2">
+            <span
+              className="relative flex h-2 w-2"
+              aria-hidden="true"
+            >
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3047D8] opacity-40" />
+
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3047D8]" />
             </span>
 
@@ -75,7 +82,10 @@ export default function FAQ() {
             </span>
           </div>
 
-          <h2 className="mt-5 text-3xl font-bold leading-tight text-[#11194F] sm:text-4xl lg:text-5xl">
+          <h2
+            id="faq-heading"
+            className="mt-5 text-3xl font-bold leading-tight text-[#11194F] sm:text-4xl lg:text-5xl"
+          >
             Questions About
             <span className="text-[#3047D8]"> Kerala Jobs?</span>
           </h2>
@@ -87,7 +97,10 @@ export default function FAQ() {
         </div>
 
         {/* FAQ LIST */}
-        <div className="mt-10 space-y-4 sm:mt-12">
+        <div
+          className="mt-10 space-y-4 sm:mt-12"
+          aria-label="Kerala jobs frequently asked questions"
+        >
           {faqs.map((faq, index) => (
             <details
               key={faq.question}
@@ -96,7 +109,10 @@ export default function FAQ() {
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-5 sm:px-6 sm:py-6">
                 <div className="flex min-w-0 items-center gap-4">
                   {/* NUMBER */}
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F4F7FF] text-xs font-bold text-[#3047D8] transition-all duration-300 group-open:bg-[#3047D8] group-open:text-white sm:h-11 sm:w-11">
+                  <div
+                    aria-hidden="true"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F4F7FF] text-xs font-bold text-[#3047D8] transition-all duration-300 group-open:bg-[#3047D8] group-open:text-white sm:h-11 sm:w-11"
+                  >
                     {String(index + 1).padStart(2, "0")}
                   </div>
 
@@ -106,7 +122,10 @@ export default function FAQ() {
                 </div>
 
                 {/* PLUS ICON */}
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-xl font-light text-[#3047D8] transition-all duration-300 group-hover:border-[#3047D8]/30 group-hover:bg-[#F4F7FF] group-open:rotate-45 group-open:border-[#3047D8] group-open:bg-[#3047D8] group-open:text-white">
+                <div
+                  aria-hidden="true"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-xl font-light text-[#3047D8] transition-all duration-300 group-hover:border-[#3047D8]/30 group-hover:bg-[#F4F7FF] group-open:rotate-45 group-open:border-[#3047D8] group-open:bg-[#3047D8] group-open:text-white"
+                >
                   +
                 </div>
               </summary>

@@ -7,54 +7,69 @@ import { seoPages } from "@/data/seoPages";
 const sharedUpdates = [
   {
     code: "01",
-    title: "IT & Software Jobs",
+    title: "IT & Software Jobs in Kerala",
     description:
-      "Explore software, development, testing, support and other technology opportunities.",
+      "Explore software development, testing, support and other IT job opportunities across Kerala.",
   },
   {
     code: "02",
-    title: "Fresher Opportunities",
+    title: "Fresher Jobs & Opportunities",
     description:
-      "Stay updated with trainee, graduate, internship and entry-level openings.",
+      "Stay updated with fresher jobs, trainee roles, internships and entry-level openings across Kerala.",
   },
   {
     code: "03",
-    title: "Government Jobs",
+    title: "Government Jobs in Kerala",
     description:
-      "Discover relevant government recruitment and public-sector opportunities.",
+      "Discover government recruitment, public-sector vacancies and relevant job updates for Kerala candidates.",
   },
   {
     code: "04",
     title: "Private Company Jobs",
     description:
-      "Find hiring updates from private companies across different industries.",
+      "Find private company vacancies and hiring opportunities across different industries in Kerala.",
   },
   {
     code: "05",
-    title: "Walk-in Interviews",
+    title: "Walk-in Interviews in Kerala",
     description:
-      "Stay informed about direct hiring drives and walk-in recruitment events.",
+      "Stay informed about walk-in interviews, direct hiring drives and recruitment events across Kerala.",
   },
   {
     code: "06",
     title: "Internships & Trainee Jobs",
     description:
-      "Explore internship and training opportunities for students and fresh graduates.",
+      "Explore internships, trainee jobs and career opportunities for students and fresh graduates in Kerala.",
   },
 ];
 
 export default function SeoLandingPage({ page }) {
-  const hasContent = Array.isArray(page.content) && page.content.length > 0;
+  const hasContent =
+    Array.isArray(page.content) && page.content.length > 0;
 
-  const hasFaqs = Array.isArray(page.faqs) && page.faqs.length > 0;
+  const hasFaqs =
+    Array.isArray(page.faqs) && page.faqs.length > 0;
 
+  const hasRelated =
+    Array.isArray(page.related) && page.related.length > 0;
+
+  const hasKeywords =
+    Array.isArray(page.keywords) && page.keywords.length > 0;
+
+  /*
+   * FAQ STRUCTURED DATA
+   * Only generated when the same FAQ content is visible on the page.
+   */
   const faqSchema = hasFaqs
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        name: `${page.title} Frequently Asked Questions`,
+
         mainEntity: page.faqs.map((faq) => ({
           "@type": "Question",
           name: faq.question,
+
           acceptedAnswer: {
             "@type": "Answer",
             text: faq.answer,
@@ -63,9 +78,52 @@ export default function SeoLandingPage({ page }) {
       }
     : null;
 
+  /*
+   * RELATED PAGE STRUCTURED DATA
+   */
+  const relatedPages = hasRelated
+    ? page.related
+        .map((slug) => {
+          const relatedPage = seoPages[slug];
+
+          if (!relatedPage) return null;
+
+          return {
+            slug,
+            page: relatedPage,
+          };
+        })
+        .filter(Boolean)
+    : [];
+
+  const relatedSchema =
+    relatedPages.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: `Related Searches for ${page.title}`,
+          numberOfItems: relatedPages.length,
+
+          itemListElement: relatedPages.map((item, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+
+            item: {
+              "@type": "WebPage",
+              name: item.page.title,
+              description: item.page.description,
+              url: `${siteConfig.siteUrl}/${item.slug}`,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
-      {/* FAQ STRUCTURED DATA */}
+      {/* =========================================================
+          STRUCTURED DATA
+      ========================================================= */}
+
       {faqSchema && (
         <script
           type="application/ld+json"
@@ -74,6 +132,19 @@ export default function SeoLandingPage({ page }) {
           }}
         />
       )}
+
+      {relatedSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(relatedSchema),
+          }}
+        />
+      )}
+
+      {/* =========================================================
+          BREADCRUMB
+      ========================================================= */}
 
       <Breadcrumb
         items={[
@@ -86,29 +157,45 @@ export default function SeoLandingPage({ page }) {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#F4F7FF]">
-        <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-[#3047D8]/10 blur-3xl" />
 
-        <div className="pointer-events-none absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-[#3B5BFF]/10 blur-3xl" />
+      <section
+        aria-labelledby="seo-page-heading"
+        className="relative overflow-hidden bg-[#F4F7FF]"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-[#3047D8]/10 blur-3xl"
+        />
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-[#3B5BFF]/10 blur-3xl"
+        />
 
         <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-24">
           {/* HERO TEXT */}
           <div className="mx-auto max-w-4xl text-center">
             {/* BADGE */}
             <div className="inline-flex items-center gap-2 rounded-full border border-[#3047D8]/10 bg-white px-4 py-2 shadow-sm">
-              <span className="relative flex h-2 w-2">
+              <span
+                aria-hidden="true"
+                className="relative flex h-2 w-2"
+              >
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3047D8] opacity-40" />
 
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3047D8]" />
               </span>
 
               <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#3047D8] sm:text-sm">
-                Kerala IT Park Jobs
+                Kerala Job Opportunities
               </span>
             </div>
 
             {/* H1 */}
-            <h1 className="mt-5 text-3xl font-bold leading-tight text-[#11194F] sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1
+              id="seo-page-heading"
+              className="mt-5 text-3xl font-bold leading-tight text-[#11194F] sm:text-4xl md:text-5xl lg:text-6xl"
+            >
               {page.heading}
             </h1>
 
@@ -139,7 +226,7 @@ export default function SeoLandingPage({ page }) {
                 >
                   <img
                     src={page.image}
-                    alt={`${page.heading} - Kerala IT Park Jobs`}
+                    alt={`${page.heading} opportunities in Kerala`}
                     loading="eager"
                     decoding="async"
                     className="
@@ -156,7 +243,10 @@ export default function SeoLandingPage({ page }) {
                   />
 
                   {/* DESKTOP/TABLET OVERLAY */}
-                  <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-[#11194F]/65 via-transparent to-transparent sm:block" />
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-[#11194F]/65 via-transparent to-transparent sm:block"
+                  />
 
                   {/* IMAGE INFO */}
                   <div className="absolute inset-x-0 bottom-0 hidden items-end justify-between gap-4 p-5 sm:flex sm:p-6 lg:p-8">
@@ -165,12 +255,20 @@ export default function SeoLandingPage({ page }) {
                         Kerala Career Opportunities
                       </p>
 
-                      <h2 className="mt-1.5 text-xl font-bold text-white sm:text-2xl lg:text-3xl">
+                      {/*
+                        Using a paragraph instead of another H2 avoids
+                        unnecessarily repeating the main page topic
+                        as an additional heading.
+                      */}
+                      <p className="mt-1.5 text-xl font-bold text-white sm:text-2xl lg:text-3xl">
                         {page.heading}
-                      </h2>
+                      </p>
                     </div>
 
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/15 text-lg text-white backdrop-blur-sm sm:h-11 sm:w-11">
+                    <div
+                      aria-hidden="true"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/15 text-lg text-white backdrop-blur-sm sm:h-11 sm:w-11"
+                    >
                       ↓
                     </div>
                   </div>
@@ -185,12 +283,15 @@ export default function SeoLandingPage({ page }) {
               href={siteConfig.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="View latest Kerala jobs on Instagram"
+              aria-label={`View latest ${page.title} and Kerala job updates on Instagram`}
               className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-7 sm:py-4"
             >
               View Latest Jobs on Instagram
 
-              <span className="transition-transform duration-300 group-hover:translate-x-1">
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
                 →
               </span>
             </a>
@@ -204,7 +305,10 @@ export default function SeoLandingPage({ page }) {
             >
               Join WhatsApp Channel
 
-              <span className="transition-transform duration-300 group-hover:translate-x-1">
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
                 →
               </span>
             </a>
@@ -213,18 +317,30 @@ export default function SeoLandingPage({ page }) {
           {/* SMALL INFO STRIP */}
           <div className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-gray-500 sm:text-sm">
             <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
-              Kerala-focused updates
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-1.5 rounded-full bg-[#3047D8]"
+              />
+
+              Kerala-focused job updates
             </span>
 
             <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
-              Fresher friendly
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-1.5 rounded-full bg-[#3047D8]"
+              />
+
+              Fresher & experienced roles
             </span>
 
             <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#3047D8]" />
-              IT & Non-IT opportunities
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-1.5 rounded-full bg-[#3047D8]"
+              />
+
+              IT & non-IT opportunities
             </span>
           </div>
         </div>
@@ -233,7 +349,11 @@ export default function SeoLandingPage({ page }) {
       {/* =========================================================
           ABOUT SECTION
       ========================================================= */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+
+      <section
+        aria-labelledby="about-current-job-page"
+        className="bg-white py-16 sm:py-20 lg:py-24"
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
             {/* CONTENT */}
@@ -242,33 +362,50 @@ export default function SeoLandingPage({ page }) {
                 Career Guide
               </div>
 
-              <h2 className="mt-5 max-w-3xl text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl">
+              <h2
+                id="about-current-job-page"
+                className="mt-5 max-w-3xl text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl"
+              >
                 Find {page.title} with Kerala IT Park Jobs
               </h2>
 
               <div className="mt-6 space-y-5 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
-                {page.description && <p>{page.description}</p>}
+                {page.description && (
+                  <p>
+                    {page.description}
+                  </p>
+                )}
 
                 <p>
-                  Kerala IT Park Jobs helps job seekers discover career
-                  opportunities from companies, organisations and employers
-                  across Kerala. We share updates related to IT jobs, fresher
-                  vacancies, government recruitment, private company jobs,
-                  internships and walk-in interviews.
+                  Kerala IT Park Jobs helps job seekers discover{" "}
+                  <strong className="font-semibold text-gray-700">
+                    {page.title.toLowerCase()}
+                  </strong>{" "}
+                  and related career opportunities across Kerala. Explore
+                  relevant openings from companies, organisations and employers
+                  along with IT jobs, fresher vacancies, private company jobs,
+                  government recruitment, internships and walk-in interviews.
                 </p>
 
                 <p>
-                  If you are searching for {page.title.toLowerCase()}, use this
-                  page to explore relevant career categories and related job
-                  searches. You can also follow our Instagram and WhatsApp
-                  communities for regular job updates.
+                  If you are searching for{" "}
+                  <strong className="font-semibold text-gray-700">
+                    {page.title.toLowerCase()}
+                  </strong>
+                  , use this page to understand relevant opportunities, career
+                  options and related job searches. You can also follow Kerala
+                  IT Park Jobs on Instagram and WhatsApp for regular Kerala job
+                  updates.
                 </p>
               </div>
             </div>
 
             {/* SIDE CARD */}
-            <div className="relative overflow-hidden rounded-[28px] bg-[#11194F] p-6 text-white shadow-xl sm:p-7 lg:sticky lg:top-24">
-              <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[#3047D8]/40 blur-3xl" />
+            <aside className="relative overflow-hidden rounded-[28px] bg-[#11194F] p-6 text-white shadow-xl sm:p-7 lg:sticky lg:top-24">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[#3047D8]/40 blur-3xl"
+              />
 
               <div className="relative">
                 <span className="inline-flex rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-semibold text-blue-100">
@@ -280,13 +417,13 @@ export default function SeoLandingPage({ page }) {
                 </h3>
 
                 <p className="mt-3 text-sm leading-7 text-gray-300">
-                  Follow Kerala IT Park Jobs and receive regular career updates
-                  through Instagram and WhatsApp.
+                  Follow Kerala IT Park Jobs for regular {page.title.toLowerCase()}{" "}
+                  and other career updates through Instagram and WhatsApp.
                 </p>
 
                 <div className="mt-6 space-y-3">
                   {[
-                    "Regular Kerala job updates",
+                    `Updates related to ${page.title}`,
                     "Fresher & experienced opportunities",
                     "IT, non-IT & government jobs",
                   ].map((item) => (
@@ -294,7 +431,10 @@ export default function SeoLandingPage({ page }) {
                       key={item}
                       className="flex items-center gap-3 text-sm text-gray-200"
                     >
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs text-blue-200">
+                      <span
+                        aria-hidden="true"
+                        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs text-blue-200"
+                      >
                         ✓
                       </span>
 
@@ -307,16 +447,20 @@ export default function SeoLandingPage({ page }) {
                   href={siteConfig.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Follow Kerala IT Park Jobs on Instagram"
                   className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-sm font-bold text-[#11194F] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
                   Follow on Instagram
 
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  >
                     →
                   </span>
                 </a>
               </div>
-            </div>
+            </aside>
           </div>
         </div>
       </section>
@@ -324,9 +468,16 @@ export default function SeoLandingPage({ page }) {
       {/* =========================================================
           PAGE-SPECIFIC SEO CONTENT
       ========================================================= */}
+
       {hasContent && (
-        <section className="relative overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
-          <div className="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#3047D8]/5 blur-3xl" />
+        <section
+          aria-labelledby="page-specific-information"
+          className="relative overflow-hidden bg-[#F8FAFC] py-16 sm:py-20 lg:py-24"
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#3047D8]/5 blur-3xl"
+          />
 
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
@@ -334,13 +485,17 @@ export default function SeoLandingPage({ page }) {
                 Career Information
               </p>
 
-              <h2 className="mt-3 text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl">
+              <h2
+                id="page-specific-information"
+                className="mt-3 text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl"
+              >
                 Explore {page.title}
               </h2>
 
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
-                Useful information to help you understand opportunities,
-                locations and career options related to {page.title.toLowerCase()}.
+                Find useful information about {page.title.toLowerCase()},
+                including career opportunities, locations, qualifications and
+                related job options in Kerala.
               </p>
             </div>
 
@@ -351,14 +506,17 @@ export default function SeoLandingPage({ page }) {
                   className="rounded-[24px] border border-gray-200 bg-white p-6 shadow-sm sm:p-8"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F4F7FF] text-sm font-bold text-[#3047D8]">
+                    <div
+                      aria-hidden="true"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F4F7FF] text-sm font-bold text-[#3047D8]"
+                    >
                       {String(index + 1).padStart(2, "0")}
                     </div>
 
                     <div className="min-w-0">
-                      <h2 className="text-xl font-bold leading-8 text-[#11194F] sm:text-2xl">
+                      <h3 className="text-xl font-bold leading-8 text-[#11194F] sm:text-2xl">
                         {section.heading}
-                      </h2>
+                      </h3>
 
                       {section.text && (
                         <p className="mt-4 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
@@ -369,25 +527,34 @@ export default function SeoLandingPage({ page }) {
                       {Array.isArray(section.paragraphs) &&
                         section.paragraphs.length > 0 && (
                           <div className="mt-4 space-y-4 text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
-                            {section.paragraphs.map((paragraph, paragraphIndex) => (
-                              <p key={paragraphIndex}>{paragraph}</p>
-                            ))}
+                            {section.paragraphs.map(
+                              (paragraph, paragraphIndex) => (
+                                <p key={paragraphIndex}>
+                                  {paragraph}
+                                </p>
+                              )
+                            )}
                           </div>
                         )}
 
                       {Array.isArray(section.bullets) &&
                         section.bullets.length > 0 && (
                           <ul className="mt-5 space-y-3">
-                            {section.bullets.map((bullet, bulletIndex) => (
-                              <li
-                                key={bulletIndex}
-                                className="flex items-start gap-3 text-sm leading-7 text-gray-600 sm:text-base"
-                              >
-                                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#3047D8]" />
+                            {section.bullets.map(
+                              (bullet, bulletIndex) => (
+                                <li
+                                  key={bulletIndex}
+                                  className="flex items-start gap-3 text-sm leading-7 text-gray-600 sm:text-base"
+                                >
+                                  <span
+                                    aria-hidden="true"
+                                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#3047D8]"
+                                  />
 
-                                <span>{bullet}</span>
-                              </li>
-                            ))}
+                                  <span>{bullet}</span>
+                                </li>
+                              )
+                            )}
                           </ul>
                         )}
                     </div>
@@ -402,43 +569,66 @@ export default function SeoLandingPage({ page }) {
       {/* =========================================================
           WHAT WE SHARE
       ========================================================= */}
-      <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-        <div className="pointer-events-none absolute -left-24 top-1/2 h-72 w-72 rounded-full bg-[#3047D8]/5 blur-3xl" />
+
+      <section
+        aria-labelledby="job-updates-we-share"
+        className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-24 top-1/2 h-72 w-72 rounded-full bg-[#3047D8]/5 blur-3xl"
+        />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#3047D8]/10 bg-[#F8FAFC] px-4 py-2 shadow-sm">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[#3047D8]" />
+              <span
+                aria-hidden="true"
+                className="h-2 w-2 animate-pulse rounded-full bg-[#3047D8]"
+              />
 
               <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#3047D8]">
-                Career Updates
+                Kerala Career Updates
               </span>
             </div>
 
-            <h2 className="mt-5 text-3xl font-bold text-[#11194F] sm:text-4xl">
+            <h2
+              id="job-updates-we-share"
+              className="mt-5 text-3xl font-bold text-[#11194F] sm:text-4xl"
+            >
               Job Updates We Share
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
-              Explore different career opportunities from across Kerala through
-              Kerala IT Park Jobs.
+              Explore IT jobs, fresher vacancies, government recruitment,
+              private jobs, internships and walk-in opportunities from across
+              Kerala.
             </p>
           </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {sharedUpdates.map((item) => (
-              <div
+              <article
                 key={item.title}
                 className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#3047D8]/30 hover:shadow-[0_18px_45px_rgba(48,71,216,0.10)]"
               >
-                <div className="absolute left-0 top-0 h-1 w-0 bg-gradient-to-r from-[#3047D8] to-[#3B5BFF] transition-all duration-500 group-hover:w-full" />
+                <div
+                  aria-hidden="true"
+                  className="absolute left-0 top-0 h-1 w-0 bg-gradient-to-r from-[#3047D8] to-[#3B5BFF] transition-all duration-500 group-hover:w-full"
+                />
 
                 <div className="flex items-center justify-between gap-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F4F7FF] text-xs font-bold text-[#3047D8] transition-all duration-300 group-hover:scale-110 group-hover:bg-[#3047D8] group-hover:text-white">
+                  <div
+                    aria-hidden="true"
+                    className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F4F7FF] text-xs font-bold text-[#3047D8] transition-all duration-300 group-hover:scale-110 group-hover:bg-[#3047D8] group-hover:text-white"
+                  >
                     {item.code}
                   </div>
 
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#3047D8]/20 transition-all duration-300 group-hover:scale-125 group-hover:bg-[#3047D8]" />
+                  <span
+                    aria-hidden="true"
+                    className="h-2.5 w-2.5 rounded-full bg-[#3047D8]/20 transition-all duration-300 group-hover:scale-125 group-hover:bg-[#3047D8]"
+                  />
                 </div>
 
                 <h3 className="mt-5 text-lg font-bold text-[#11194F] transition-colors duration-300 group-hover:text-[#3047D8]">
@@ -448,17 +638,21 @@ export default function SeoLandingPage({ page }) {
                 <p className="mt-3 text-sm leading-7 text-gray-600">
                   {item.description}
                 </p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          POPULAR SEARCHES
+          RELATED / POPULAR SEARCH TERMS
       ========================================================= */}
-      {page.keywords?.length > 0 && (
-        <section className="bg-[#F8FAFC] py-14 sm:py-16 lg:py-20">
+
+      {hasKeywords && (
+        <section
+          aria-labelledby="related-searches-heading"
+          className="bg-[#F8FAFC] py-14 sm:py-16 lg:py-20"
+        >
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
@@ -466,17 +660,24 @@ export default function SeoLandingPage({ page }) {
                   Related Searches
                 </p>
 
-                <h2 className="mt-2 text-2xl font-bold text-[#11194F] sm:text-3xl">
-                  Popular Searches
+                <h2
+                  id="related-searches-heading"
+                  className="mt-2 text-2xl font-bold text-[#11194F] sm:text-3xl"
+                >
+                  Popular Searches for {page.title}
                 </h2>
               </div>
 
               <p className="max-w-lg text-sm leading-6 text-gray-500">
-                Explore searches commonly related to {page.title.toLowerCase()}.
+                Explore common search topics and career terms related to{" "}
+                {page.title.toLowerCase()}.
               </p>
             </div>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div
+              aria-label={`Search terms related to ${page.title}`}
+              className="mt-7 flex flex-wrap gap-3"
+            >
               {page.keywords.map((keyword) => (
                 <span
                   key={keyword}
@@ -493,8 +694,12 @@ export default function SeoLandingPage({ page }) {
       {/* =========================================================
           RELATED PAGES
       ========================================================= */}
-      {page.related?.length > 0 && (
-        <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+
+      {relatedPages.length > 0 && (
+        <section
+          aria-labelledby="related-job-pages-heading"
+          className="relative overflow-hidden bg-white py-16 sm:py-20"
+        >
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
@@ -502,61 +707,69 @@ export default function SeoLandingPage({ page }) {
                   Continue Exploring
                 </p>
 
-                <h2 className="mt-2 text-2xl font-bold text-[#11194F] sm:text-3xl">
-                  Explore Related Job Searches
+                <h2
+                  id="related-job-pages-heading"
+                  className="mt-2 text-2xl font-bold text-[#11194F] sm:text-3xl"
+                >
+                  Related Jobs & Career Searches
                 </h2>
               </div>
 
               <Link
                 href="/jobs-in-kerala"
+                aria-label="Explore all jobs in Kerala"
                 className="group inline-flex w-fit items-center gap-2 text-sm font-bold text-[#3047D8]"
               >
-                View Kerala Jobs
+                View All Kerala Jobs
 
-                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                >
                   →
                 </span>
               </Link>
             </div>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {page.related.map((slug) => {
-                const relatedPage = seoPages[slug];
+              {relatedPages.map(({ slug, page: relatedPage }) => (
+                <Link
+                  key={slug}
+                  href={`/${slug}`}
+                  aria-label={`Explore ${relatedPage.title}`}
+                  className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#3047D8]/30 hover:shadow-[0_15px_35px_rgba(48,71,216,0.09)] sm:p-6"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-[#3047D8]/5 transition-transform duration-500 group-hover:scale-150"
+                  />
 
-                if (!relatedPage) return null;
+                  <div className="relative">
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="text-base font-bold leading-6 text-[#11194F] transition-colors duration-300 group-hover:text-[#3047D8] sm:text-lg">
+                        {relatedPage.title}
+                      </h3>
 
-                return (
-                  <Link
-                    key={slug}
-                    href={`/${slug}`}
-                    className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#3047D8]/30 hover:shadow-[0_15px_35px_rgba(48,71,216,0.09)] sm:p-6"
-                  >
-                    <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-[#3047D8]/5 transition-transform duration-500 group-hover:scale-150" />
-
-                    <div className="relative">
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className="text-base font-bold leading-6 text-[#11194F] transition-colors duration-300 group-hover:text-[#3047D8] sm:text-lg">
-                          {relatedPage.title}
-                        </h3>
-
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-400 transition-all duration-300 group-hover:translate-x-1 group-hover:border-[#3047D8] group-hover:bg-[#3047D8] group-hover:text-white">
-                          →
-                        </span>
-                      </div>
-
-                      {relatedPage.description && (
-                        <p className="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
-                          {relatedPage.description}
-                        </p>
-                      )}
-
-                      <p className="mt-4 text-sm font-semibold text-[#3047D8]">
-                        Explore Jobs →
-                      </p>
+                      <span
+                        aria-hidden="true"
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-400 transition-all duration-300 group-hover:translate-x-1 group-hover:border-[#3047D8] group-hover:bg-[#3047D8] group-hover:text-white"
+                      >
+                        →
+                      </span>
                     </div>
-                  </Link>
-                );
-              })}
+
+                    {relatedPage.description && (
+                      <p className="mt-3 line-clamp-2 text-sm leading-6 text-gray-500">
+                        {relatedPage.description}
+                      </p>
+                    )}
+
+                    <p className="mt-4 text-sm font-semibold text-[#3047D8]">
+                      Explore {relatedPage.title} →
+                    </p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
@@ -565,21 +778,28 @@ export default function SeoLandingPage({ page }) {
       {/* =========================================================
           FAQ SECTION
       ========================================================= */}
+
       {hasFaqs && (
-        <section className="bg-[#F8FAFC] py-16 sm:py-20 lg:py-24">
+        <section
+          aria-labelledby="faq-section-heading"
+          className="bg-[#F8FAFC] py-16 sm:py-20 lg:py-24"
+        >
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#3047D8]">
                 Frequently Asked Questions
               </p>
 
-              <h2 className="mt-3 text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl">
+              <h2
+                id="faq-section-heading"
+                className="mt-3 text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl"
+              >
                 Questions About {page.title}
               </h2>
 
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
-                Find answers to common questions related to{" "}
-                {page.title.toLowerCase()}.
+                Find answers to common questions about{" "}
+                {page.title.toLowerCase()} and related opportunities in Kerala.
               </p>
             </div>
 
@@ -594,7 +814,10 @@ export default function SeoLandingPage({ page }) {
                       {faq.question}
                     </h3>
 
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F4F7FF] text-lg font-medium text-[#3047D8] transition-transform duration-300 group-open:rotate-45">
+                    <span
+                      aria-hidden="true"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F4F7FF] text-lg font-medium text-[#3047D8] transition-transform duration-300 group-open:rotate-45"
+                    >
                       +
                     </span>
                   </summary>
@@ -614,27 +837,44 @@ export default function SeoLandingPage({ page }) {
       {/* =========================================================
           COMMUNITY CTA
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#11194F] py-16 text-white sm:py-20 lg:py-24">
-        <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#3047D8]/30 blur-3xl" />
 
-        <div className="pointer-events-none absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-[#3B5BFF]/20 blur-3xl" />
+      <section
+        aria-labelledby="community-cta-heading"
+        className="relative overflow-hidden bg-[#11194F] py-16 text-white sm:py-20 lg:py-24"
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#3047D8]/30 blur-3xl"
+        />
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-[#3B5BFF]/20 blur-3xl"
+        />
 
         <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-[#25D366]" />
+            <span
+              aria-hidden="true"
+              className="h-2 w-2 animate-pulse rounded-full bg-[#25D366]"
+            />
 
             <span className="text-xs font-bold uppercase tracking-[0.14em] text-blue-100">
               Kerala Job Community
             </span>
           </div>
 
-          <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+          <h2
+            id="community-cta-heading"
+            className="mt-5 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl"
+          >
             Join Kerala IT Park Jobs Community
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-gray-300 sm:text-base sm:leading-8">
-            Follow our Instagram page and join our WhatsApp communities to stay
-            updated with job opportunities from across Kerala.
+            Follow our Instagram page and join our WhatsApp communities for
+            regular {page.title.toLowerCase()} and other job opportunities from
+            across Kerala.
           </p>
 
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
@@ -642,11 +882,15 @@ export default function SeoLandingPage({ page }) {
               href={siteConfig.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Follow Kerala IT Park Jobs on Instagram"
               className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:px-7"
             >
               Follow Instagram
 
-              <span className="transition-transform duration-300 group-hover:translate-x-1">
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
                 →
               </span>
             </a>
@@ -655,11 +899,15 @@ export default function SeoLandingPage({ page }) {
               href={siteConfig.whatsappChannelUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Join Kerala IT Park Jobs WhatsApp Channel"
               className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#20BD5A] hover:shadow-lg sm:px-7"
             >
               Join WhatsApp Channel
 
-              <span className="transition-transform duration-300 group-hover:translate-x-1">
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
                 →
               </span>
             </a>
@@ -668,11 +916,15 @@ export default function SeoLandingPage({ page }) {
               href={siteConfig.whatsappGroupUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Join Kerala IT Park Jobs WhatsApp Groups"
               className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.06] px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/10 sm:px-7"
             >
               Join WhatsApp Groups
 
-              <span className="transition-transform duration-300 group-hover:translate-x-1">
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
                 →
               </span>
             </a>

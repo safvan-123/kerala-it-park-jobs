@@ -1,13 +1,12 @@
 import Link from "next/link";
-
 import Breadcrumb from "@/components/common/Breadcrumb";
+import { siteConfig } from "@/data/siteConfig";
 
 export const metadata = {
-  title:
-    "IT Career Resources for Freshers in Kerala | Jobs, Resume & Interview Guides",
+  title: "IT Career Resources for Freshers in Kerala",
 
   description:
-    "Explore IT career resources for freshers in Kerala including job search guidance, resume preparation, software career roadmaps, interview preparation, placements and Kerala IT park information.",
+    "Explore IT career resources for freshers in Kerala covering job search, resumes, interviews, software career paths, placement preparation and Kerala IT parks.",
 
   alternates: {
     canonical: "/resources",
@@ -17,10 +16,19 @@ export const metadata = {
     title:
       "IT Career Resources for Freshers in Kerala | Kerala IT Park Jobs",
     description:
-      "Practical resources for Kerala freshers covering IT job search, resumes, interviews, software careers, placements and Kerala IT parks.",
-    url: "https://keralaitparkjobs.in/resources",
-    siteName: "Kerala IT Park Jobs",
+      "Practical IT career guides for Kerala freshers covering job search, resumes, interviews, software careers, placements and Kerala IT parks.",
+    url: `${siteConfig.siteUrl}/resources`,
+    siteName: siteConfig.name,
     type: "website",
+    locale: "en_IN",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "IT Career Resources for Freshers in Kerala | Kerala IT Park Jobs",
+    description:
+      "Practical IT career guides for Kerala freshers covering job search, resumes, interviews, software careers and placement preparation.",
   },
 
   robots: {
@@ -35,7 +43,7 @@ const resources = [
     label: "Job Search",
     title: "Job Search Guide for Freshers in Kerala",
     description:
-      "Learn how to search for IT jobs and fresher opportunities in Kerala, choose suitable roles, improve applications and build a consistent job-search routine.",
+      "Learn how to search for IT jobs and fresher opportunities in Kerala, choose suitable roles, improve applications and follow a consistent job-search strategy.",
     href: "/resources/job-search-guide-kerala",
     accent: "from-[#3047D8] to-[#3B5BFF]",
   },
@@ -44,7 +52,7 @@ const resources = [
     label: "Resume",
     title: "Resume Guide for Freshers",
     description:
-      "Build a professional fresher resume that clearly presents your education, technical skills, software projects, internships and achievements.",
+      "Create a professional fresher resume that clearly presents your education, technical skills, software projects, internships and achievements.",
     href: "/resources/resume-guide-for-freshers",
     accent: "from-[#11194F] to-[#3047D8]",
   },
@@ -53,7 +61,7 @@ const resources = [
     label: "Interview",
     title: "IT Interview Preparation for Freshers",
     description:
-      "Prepare for HR and technical interviews with practical guidance on communication, software projects, technical questions and interview behaviour.",
+      "Prepare for HR and technical interviews with guidance on communication, software projects, technical questions and interview behaviour.",
     href: "/resources/interview-preparation",
     accent: "from-[#3047D8] to-[#6B7BFF]",
   },
@@ -80,7 +88,7 @@ const resources = [
     label: "Kerala IT",
     title: "Kerala IT Parks Guide",
     description:
-      "Explore Kerala's technology hubs including Infopark Kochi, Technopark Trivandrum, Cyberpark Kozhikode and SmartCity Kochi.",
+      "Explore Kerala technology hubs including Infopark Kochi, Technopark Trivandrum, Cyberpark Kozhikode and SmartCity Kochi.",
     href: "/resources/kerala-it-parks-guide",
     accent: "from-[#11194F] to-[#3047D8]",
   },
@@ -90,69 +98,99 @@ const steps = [
   {
     number: "01",
     title: "Choose Your IT Career Direction",
-    text: "Identify the software or IT role you want to target instead of applying randomly to unrelated positions.",
+    text:
+      "Identify the software or IT role you want to target instead of applying randomly to unrelated positions.",
   },
   {
     number: "02",
     title: "Strengthen Your Career Profile",
-    text: "Improve your resume, technical skills, projects, GitHub, communication and interview preparation before applying.",
+    text:
+      "Improve your resume, technical skills, software projects, GitHub profile, communication and interview preparation before applying.",
   },
   {
     number: "03",
     title: "Search and Apply Consistently",
-    text: "Follow relevant IT opportunities regularly and keep improving your profile based on applications and interview feedback.",
+    text:
+      "Follow relevant IT and fresher job opportunities regularly and improve your profile based on applications and interview feedback.",
   },
 ];
 
 const highlights = [
   "IT career guidance for freshers",
-  "Kerala IT jobs & career focus",
+  "IT jobs in Kerala",
   "Resume & interview preparation",
   "Software career roadmaps",
 ];
 
 export default function ResourcesPage() {
-  const webPageSchema = {
+  const pageUrl = `${siteConfig.siteUrl}/resources`;
+
+  const collectionPageSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${pageUrl}#webpage`,
     name: "IT Career Resources for Freshers in Kerala",
+    headline: "IT Career Resources for Freshers in Kerala",
     description:
-      "Career resources covering IT job search, resume preparation, interview preparation, software career paths, placement preparation and Kerala IT parks.",
-    url: "https://keralaitparkjobs.in/resources",
+      "Career resources for freshers covering IT job search, resume preparation, interviews, software career paths, placements and Kerala IT parks.",
+    url: pageUrl,
+    inLanguage: "en-IN",
+
     isPartOf: {
       "@type": "WebSite",
-      name: "Kerala IT Park Jobs",
-      url: "https://keralaitparkjobs.in",
+      "@id": `${siteConfig.siteUrl}/#website`,
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
     },
+
     publisher: {
       "@type": "Organization",
-      name: "Kerala IT Park Jobs",
-      url: "https://keralaitparkjobs.in",
+      "@id": `${siteConfig.siteUrl}/#organization`,
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
     },
-  };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
+    about: [
       {
-        "@type": "ListItem",
-        position: 1,
-        name: "Career Resources",
-        item: "https://keralaitparkjobs.in/resources",
+        "@type": "Thing",
+        name: "IT Careers in Kerala",
+      },
+      {
+        "@type": "Thing",
+        name: "Fresher Jobs in Kerala",
+      },
+      {
+        "@type": "Thing",
+        name: "Software Careers",
+      },
+      {
+        "@type": "Thing",
+        name: "Kerala IT Parks",
       },
     ],
+
+    mainEntity: {
+      "@id": `${pageUrl}#resources`,
+    },
   };
 
   const resourceListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Career Resources for Freshers",
+    "@id": `${pageUrl}#resources`,
+    name: "IT Career Resources for Freshers in Kerala",
+    numberOfItems: resources.length,
+
     itemListElement: resources.map((resource, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: resource.title,
-      url: `https://keralaitparkjobs.in${resource.href}`,
+
+      item: {
+        "@type": "WebPage",
+        name: resource.title,
+        description: resource.description,
+        url: `${siteConfig.siteUrl}${resource.href}`,
+      },
     })),
   };
 
@@ -161,14 +199,7 @@ export default function ResourcesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(webPageSchema),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(collectionPageSchema),
         }}
       />
 
@@ -185,12 +216,10 @@ export default function ResourcesPage() {
           HERO
       ========================================================= */}
       <section className="relative overflow-hidden bg-[#F4F7FF]">
-        {/* Decorative glow */}
         <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-[#3047D8]/10 blur-3xl" />
 
         <div className="pointer-events-none absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-[#3B5BFF]/10 blur-3xl" />
 
-        {/* Subtle grid */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.035]">
           <div
             className="h-full w-full"
@@ -204,11 +233,9 @@ export default function ResourcesPage() {
 
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-[#3047D8]/10 bg-white/90 px-4 py-2 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3047D8] opacity-40" />
-
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3047D8]" />
               </span>
 
@@ -217,20 +244,17 @@ export default function ResourcesPage() {
               </span>
             </div>
 
-            {/* Title */}
             <h1 className="mx-auto mt-6 max-w-5xl text-3xl font-bold leading-tight text-[#11194F] sm:text-4xl md:text-5xl lg:text-6xl">
               IT Career Resources for Freshers in Kerala
             </h1>
 
-            {/* Description */}
             <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8 md:text-lg">
-              Practical guidance for freshers preparing for IT and software
-              careers in Kerala. Improve your job search, resume, technical
-              skills, interview preparation and understanding of Kerala's
-              major technology hubs.
+              Practical career guidance for freshers looking for IT jobs in
+              Kerala. Improve your job search, resume, software skills,
+              interview preparation and knowledge of Kerala&apos;s major IT
+              parks and technology hubs.
             </p>
 
-            {/* CTA */}
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href="/resources/job-search-guide-kerala"
@@ -251,7 +275,6 @@ export default function ResourcesPage() {
               </Link>
             </div>
 
-            {/* Mini highlights */}
             <div className="mx-auto mt-9 flex max-w-4xl flex-wrap justify-center gap-2.5">
               {highlights.map((item) => (
                 <span
@@ -265,35 +288,32 @@ export default function ResourcesPage() {
           </div>
         </div>
 
-        {/* Bottom divider */}
         <div className="h-px bg-gradient-to-r from-transparent via-[#3047D8]/15 to-transparent" />
       </section>
 
       {/* =========================================================
-          INTRO / MOTIVATION
+          INTRO
       ========================================================= */}
       <section className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            {/* Left */}
             <div>
               <div className="inline-flex rounded-full bg-[#F4F7FF] px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8]">
                 Start with a Plan
               </div>
 
               <h2 className="mt-5 max-w-xl text-2xl font-bold leading-tight text-[#11194F] sm:text-3xl lg:text-4xl">
-                Prepare Before Applying for IT Jobs
+                Prepare Before Applying for IT Jobs in Kerala
               </h2>
 
               <p className="mt-5 max-w-xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8">
-                Getting an IT job is not only about finding vacancies. Your
-                resume, technical skills, software projects, communication,
-                interview preparation and career direction all influence how
-                employers evaluate your profile.
+                Finding an IT job is not only about discovering vacancies.
+                Employers also evaluate your resume, technical skills, software
+                projects, communication, career direction and ability to
+                explain your work during interviews.
               </p>
             </div>
 
-            {/* Right */}
             <div className="relative">
               <div className="absolute -inset-4 rounded-[32px] bg-gradient-to-br from-[#3047D8]/8 to-transparent blur-2xl" />
 
@@ -309,9 +329,10 @@ export default function ResourcesPage() {
                 </h3>
 
                 <p className="mt-4 text-sm leading-7 text-gray-300 sm:text-base">
-                  Every useful project, application, interview and technical
-                  improvement can strengthen your profile. Focus on consistent
-                  progress while searching for suitable software and IT roles.
+                  Every useful project, job application, interview and
+                  technical improvement can strengthen your profile. Continue
+                  developing relevant skills while searching for suitable
+                  software and IT roles.
                 </p>
 
                 <div className="mt-6 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-4 transition-all duration-300 hover:bg-white/[0.09]">
@@ -339,24 +360,22 @@ export default function ResourcesPage() {
         <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#3B5BFF]/5 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Section heading */}
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-[#3047D8] shadow-sm">
               Explore Career Guides
             </div>
 
             <h2 className="mt-5 text-2xl font-bold text-[#11194F] sm:text-3xl lg:text-4xl">
-              IT Career Guides for Freshers
+              IT Career Guides for Freshers in Kerala
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
-              Explore practical guides covering IT job searching, resumes,
-              interviews, software careers, placements and Kerala technology
-              parks.
+              Explore practical guides covering IT job searching, fresher
+              resumes, technical interviews, software career paths, placement
+              preparation and Kerala&apos;s major technology parks.
             </p>
           </div>
 
-          {/* Cards */}
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {resources.map((resource) => (
               <Link
@@ -424,8 +443,8 @@ export default function ResourcesPage() {
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base">
-              A focused process can make your software career preparation and
-              job search more effective.
+              A focused career preparation process can make your IT job search
+              more effective and help you target suitable opportunities.
             </p>
           </div>
 
@@ -455,7 +474,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* =========================================================
-          QUICK SUPPORT STRIP
+          QUICK SUPPORT
       ========================================================= */}
       <section className="bg-[#F4F7FF] py-12 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -463,17 +482,20 @@ export default function ResourcesPage() {
             {[
               {
                 title: "Need a Better Fresher Resume?",
-                text: "Learn how to present your technical skills, software projects, internships and strengths clearly.",
+                text:
+                  "Learn how to present your technical skills, software projects, internships and strengths clearly to employers.",
                 href: "/resources/resume-guide-for-freshers",
               },
               {
                 title: "Preparing for an IT Interview?",
-                text: "Practise HR and technical interview questions and improve how you explain your skills and projects.",
+                text:
+                  "Practise HR and technical interview questions and improve how you explain your software skills and projects.",
                 href: "/resources/interview-preparation",
               },
               {
                 title: "Not Sure Which Software Career to Choose?",
-                text: "Compare frontend, backend, full stack, testing, data analytics and DevOps career paths.",
+                text:
+                  "Compare frontend, backend, full stack, software testing, data analytics and DevOps career paths.",
                 href: "/resources/software-career-roadmap",
               },
             ].map((item) => (
@@ -492,6 +514,7 @@ export default function ResourcesPage() {
 
                 <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#3047D8]">
                   Explore Guide
+
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
@@ -524,9 +547,9 @@ export default function ResourcesPage() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-300 sm:text-base">
-            Improve your resume, technical skills, projects and interview
-            preparation while consistently exploring suitable IT, software and
-            fresher opportunities across Kerala.
+            Improve your resume, technical skills, software projects and
+            interview preparation while consistently exploring IT jobs,
+            software careers and fresher opportunities across Kerala.
           </p>
 
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
