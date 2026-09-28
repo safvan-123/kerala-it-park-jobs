@@ -2,67 +2,53 @@ import { seoPages } from "@/data/seoPages";
 import { siteConfig } from "@/data/siteConfig";
 
 export default function sitemap() {
-  const seoUrls = Object.keys(seoPages).map((slug) => ({
-    url: `${siteConfig.siteUrl}/${slug}`,
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
+  const baseUrl = siteConfig.siteUrl.replace(/\/$/, "");
+
+  const seoUrls = Object.entries(seoPages)
+    // Don't include redirect / alias pages in sitemap
+    .filter(([, page]) => page.pageType !== "alias")
+    .map(([slug, page]) => ({
+      url: `${baseUrl}/${slug}`,
+
+      // Add lastModified only when we really know the update date
+      ...(page.updatedAt
+        ? { lastModified: new Date(page.updatedAt) }
+        : {}),
+    }));
 
   const staticPages = [
     {
-      url: siteConfig.siteUrl,
-      changeFrequency: "daily",
-      priority: 1,
+      url: baseUrl,
     },
     {
-      url: `${siteConfig.siteUrl}/about`,
-      changeFrequency: "monthly",
-      priority: 0.6,
+      url: `${baseUrl}/about`,
     },
     {
-      url: `${siteConfig.siteUrl}/community`,
-      changeFrequency: "weekly",
-      priority: 0.8,
+      url: `${baseUrl}/community`,
     },
     {
-      url: `${siteConfig.siteUrl}/contact`,
-      changeFrequency: "monthly",
-      priority: 0.5,
+      url: `${baseUrl}/contact`,
     },
     {
-      url: `${siteConfig.siteUrl}/resources`,
-      changeFrequency: "weekly",
-      priority: 0.8,
+      url: `${baseUrl}/resources`,
     },
     {
-      url: `${siteConfig.siteUrl}/resources/job-search-guide-kerala`,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      url: `${baseUrl}/resources/job-search-guide-kerala`,
     },
     {
-      url: `${siteConfig.siteUrl}/resources/resume-guide-for-freshers`,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      url: `${baseUrl}/resources/resume-guide-for-freshers`,
     },
     {
-      url: `${siteConfig.siteUrl}/resources/interview-preparation`,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      url: `${baseUrl}/resources/interview-preparation`,
     },
     {
-      url: `${siteConfig.siteUrl}/resources/software-career-roadmap`,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      url: `${baseUrl}/resources/software-career-roadmap`,
     },
     {
-      url: `${siteConfig.siteUrl}/resources/placement-preparation`,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      url: `${baseUrl}/resources/placement-preparation`,
     },
     {
-      url: `${siteConfig.siteUrl}/resources/kerala-it-parks-guide`,
-      changeFrequency: "monthly",
-      priority: 0.8,
+      url: `${baseUrl}/resources/kerala-it-parks-guide`,
     },
   ];
 
